@@ -25,7 +25,7 @@
 
 ---
 
-## ❯ Abstract
+## ❯ Manifesto
 
 Qiskit Aer accepts **crisp** numbers for noise. Real superconducting qubits drift between every IBM calibration. We close the gap with a Takagi·Sugeno·Kang fuzzy inference layer that turns calibration snapshots into an *ensemble* of `NoiseModel` instances, then aggregates simulations into **interval-valued** predictions that bracket real hardware across calibration cycles.
 
@@ -136,7 +136,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
     <tr>
       <td align="center"><b>1</b></td>
       <td>≥ 630 snapshot dataset</td>
-      <td><img src="https://img.shields.io/badge/accumulating-f59e0b?style=flat-square" alt="accumulating"> ANFIS training prerequisite</td>
+      <td><img src="https://img.shields.io/badge/accumulating-f59e0b?style=flat-square" alt="accumulating"> 24/day via CI · ~4 weeks to floor</td>
     </tr>
     <tr>
       <td align="center"><b>2</b></td>
@@ -153,7 +153,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
 
 ## ❯ Now shipping
 
-> Phase 0 deliverable is live. `superconducted-poll` archives IBM backend calibration snapshots on a cron, building the historical record needed for fuzzy training. Phase 1 is dataset accumulation: every four hours, another data point.
+> Phase 0 deliverable is live. `superconducted-poll` archives IBM backend calibration snapshots, driven by a GitHub Actions workflow that fires hourly against `ibm_fez`. Phase 1 is dataset accumulation: 24 snapshots/day, with the ≥ 630 ANFIS-training floor roughly four weeks out.
 
 ## ❯ Field notes
 
@@ -162,7 +162,8 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
 - **Phase 0 · shipped.** Calibration polling pipeline went live with the `superconducted-poll` console script. Cron-friendly, idempotent, one invocation per round. → [flagship repo](https://github.com/SuperconducTED/superconducted-noise-engine)
 - **ADR · Factory · Ensemble pattern adopted.** Aer's no-per-shot-Python-hook constraint forced the design hand: epistemic uncertainty has to be realised at *ensemble construction* time, not per shot. → [`docs/decisions.md`](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/decisions.md)
 - **Decision · benchmark target locked.** Bautra et al. 2026's `0.686%` fidelity deviation chosen as the single-snapshot bar. Our differentiator is *transferability*, not snapshot accuracy.
-- **Polling cadence · every 4 hours.** Targets a ≥ 630 snapshot working minimum over a 90 day window. Tunable via cron.
+- **Hourly polling, in CI.** The `Calibration Polling` GitHub Actions workflow fires at HH:05 every hour, runs `superconducted-poll --backend ibm_fez`, and verifies the poller produced files before committing. Concurrency control keeps overlapping runs from racing each other.
+- **Git as the calibration database.** Snapshots are committed to a dedicated `calibration-data` branch, organised as `snapshots/YYYY-MM/ibm_fez/*.json`. Keeps `main` clean; provenance is just `git log`. Historical backfill remains capped at 30 days via `SUPERCONDUCTED_HISTORICAL_MAX_DAYS`.
 
 <sub>Want to write the next entry? See the <a href="https://github.com/SuperconducTED/superconducted-noise-engine/issues">open issues</a> on the flagship.</sub>
 
@@ -219,7 +220,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
   Aer is the standard. Pulse-level simulators (Qiskit Dynamics and friends) are more accurate per snapshot but slower by orders of magnitude. Our value proposition is *transferability across snapshots*, so we want the fast inner loop. The fuzzy envelope absorbs the per-snapshot accuracy gap.
 
   **What's the ≥ 630 number?**
-  ANFIS rule consequents need enough calibration snapshots to fit without overfitting. 630 = 90 days × 7 snapshots per day at the current polling cadence. Working minimum, not a magic threshold.
+  The team's working minimum for ANFIS training · enough historical records that rule consequents can be fit without overfitting. At the current hourly cadence (24 snapshots/day from the `Calibration Polling` workflow against `ibm_fez`), reaching it takes roughly four weeks of uninterrupted polling.
 
   **Can I use this without an IBM Quantum account?**
   For the polling stage, no. For the noise modeling stage, yes: bring your own calibration JSON in the documented schema and the engine doesn't care where it came from.
