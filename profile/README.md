@@ -7,7 +7,7 @@
 -->
 
 <p align="center">
-  <img src="./assets/header.svg" alt="SuperconducTED · TED University · Ankara" width="100%">
+  <img src="https://raw.githubusercontent.com/SuperconducTED/.github/main/header.svg" alt="SuperconducTED · TED University · Ankara" width="100%">
 </p>
 
 <p align="center">
@@ -56,7 +56,7 @@ Architecture detail: [`docs/architecture.md`](https://github.com/SuperconducTED/
 ## ❯ How fuzzy noise actually works
 
 <p align="center">
-  <img src="./assets/fuzzy-noise.svg" alt="From a crisp parameter, through a fuzzy ensemble, to an interval that brackets real hardware" width="100%">
+  <img src="https://raw.githubusercontent.com/SuperconducTED/.github/main/fuzzy-noise.svg" alt="From a crisp parameter, through a fuzzy ensemble, to an interval that brackets real hardware" width="100%">
 </p>
 
 A crisp `T1 = 142 µs` is what Aer wants. A real backend that just got recalibrated wants a *range* of plausible values weighted by membership. We fuzzify the snapshot through the TSK rule base, sample N concrete `NoiseModel` instances from the resulting envelope, run each through Aer in parallel, and report `[p_lo, p_hi]` instead of a single fidelity number. The win is that the real IBM datapoint lives **inside the interval** the next time the backend gets recalibrated, which is what crisp baselines stop doing the moment the snapshot they were tuned on goes stale.
