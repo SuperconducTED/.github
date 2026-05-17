@@ -86,7 +86,23 @@ A crisp `T1 = 142 µs` is what Aer wants. A real backend that just got recalibra
 ## ❯ Activity
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SuperconducTED&theme=react-dark&hide_border=true&bg_color=0b0d17&color=06b6d4&line=7f5af0&point=06b6d4&area=true&area_color=7f5af033&custom_title=Commits%20over%20time" alt="Activity graph" width="100%">
+  <a href="https://github.com/SuperconducTED/superconducted-noise-engine/commits/main">
+    <img src="https://img.shields.io/github/last-commit/SuperconducTED/superconducted-noise-engine?style=for-the-badge&color=06b6d4&labelColor=0b0d17&logo=github&label=last%20commit" alt="last commit">
+  </a>
+  <img src="https://img.shields.io/github/commit-activity/m/SuperconducTED/superconducted-noise-engine?style=for-the-badge&color=7f5af0&labelColor=0b0d17&label=commits%2Fmonth" alt="commits per month">
+  <a href="https://github.com/SuperconducTED/superconducted-noise-engine/issues">
+    <img src="https://img.shields.io/github/issues/SuperconducTED/superconducted-noise-engine?style=for-the-badge&color=f59e0b&labelColor=0b0d17&label=open%20issues" alt="open issues">
+  </a>
+  <a href="https://github.com/SuperconducTED/superconducted-noise-engine/pulls">
+    <img src="https://img.shields.io/github/issues-pr/SuperconducTED/superconducted-noise-engine?style=for-the-badge&color=10b981&labelColor=0b0d17&label=open%20PRs" alt="open PRs">
+  </a>
+  <img src="https://img.shields.io/github/contributors/SuperconducTED/superconducted-noise-engine?style=for-the-badge&color=06b6d4&labelColor=0b0d17&label=contributors" alt="contributors">
+</p>
+
+<p align="center">
+  <a href="https://star-history.com/#SuperconducTED/superconducted-noise-engine&Date">
+    <img src="https://api.star-history.com/svg?repos=SuperconducTED/superconducted-noise-engine&type=Date&theme=dark" alt="Star history" width="78%">
+  </a>
 </p>
 
 ## ❯ Roadmap
