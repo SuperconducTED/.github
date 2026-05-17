@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="From crisp parameter to fuzzy ensemble to interval prediction">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0d17"/>
+      <stop offset="50%" stop-color="#0f1226"/>
+      <stop offset="100%" stop-color="#0b0d17"/>
+    </linearGradient>
+    <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="380" fill="url(#bg2)" rx="10"/>
+
+  <!-- top label strip -->
+  <text x="600" y="32" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="3">FROM A CRISP NUMBER  ·  TO AN ENSEMBLE  ·  TO AN INTERVAL THAT BRACKETS REAL HARDWARE</text>
+
+  <!-- PANEL 1: CRISP -->
+  <g transform="translate(50 70)">
+    <text x="150" y="0" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#06b6d4" letter-spacing="3">CRISP</text>
+    <text x="150" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">single point estimate</text>
+
+    <!-- panel outline -->
+    <rect x="0" y="40" width="300" height="210" rx="6" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- axis -->
+    <line x1="30" y1="200" x2="270" y2="200" stroke="#64748b" stroke-width="1"/>
+    <line x1="30" y1="195" x2="30" y2="205" stroke="#64748b" stroke-width="1"/>
+    <line x1="270" y1="195" x2="270" y2="205" stroke="#64748b" stroke-width="1"/>
+    <text x="30" y="220" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">100µs</text>
+    <text x="270" y="220" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">200µs</text>
+
+    <!-- single point -->
+    <line x1="150" y1="200" x2="150" y2="120" stroke="#7f5af0" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+    <circle cx="150" cy="200" r="6.5" fill="#7f5af0" filter="url(#glow2)"/>
+
+    <!-- label -->
+    <text x="150" y="110" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#ffffff" font-weight="600">T1 = 142 µs</text>
+    <text x="150" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#64748b">what Aer accepts today</text>
+  </g>
+
+  <!-- ARROW 1 -->
+  <g transform="translate(360 195)">
+    <line x1="0" y1="0" x2="55" y2="0" stroke="#06b6d4" stroke-width="1.5" opacity="0.8"/>
+    <polygon points="55,-6 68,0 55,6" fill="#06b6d4"/>
+    <text x="34" y="-14" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#06b6d4" letter-spacing="2">TSK</text>
+    <text x="34" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">fuzzify</text>
+  </g>
+
+  <!-- PANEL 2: ENSEMBLE -->
+  <g transform="translate(450 70)">
+    <text x="150" y="0" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#06b6d4" letter-spacing="3">ENSEMBLE</text>
+    <text x="150" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">fuzzy uncertainty envelope</text>
+
+    <rect x="0" y="40" width="300" height="210" rx="6" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- membership function (bell-ish triangle) -->
+    <path d="M 40 200 L 100 130 L 150 95 L 200 130 L 260 200 Z" fill="#7f5af0" fill-opacity="0.14" stroke="#7f5af0" stroke-width="1.4"/>
+
+    <!-- inner type-2 footprint (interval type 2 hint) -->
+    <path d="M 60 200 L 110 150 L 150 120 L 190 150 L 240 200 Z" fill="none" stroke="#7f5af0" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.6"/>
+
+    <!-- axis -->
+    <line x1="30" y1="200" x2="270" y2="200" stroke="#64748b" stroke-width="1"/>
+
+    <!-- sampled points (the NoiseModel ensemble) -->
+    <g fill="#06b6d4" filter="url(#glow2)">
+      <circle cx="105" cy="200" r="4"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" repeatCount="indefinite"/></circle>
+      <circle cx="128" cy="200" r="4"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="0.4s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="200" r="4"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="0.8s" repeatCount="indefinite"/></circle>
+      <circle cx="172" cy="200" r="4"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="1.2s" repeatCount="indefinite"/></circle>
+      <circle cx="195" cy="200" r="4"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="1.6s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <text x="150" y="82" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#a3b8ff">μ(T1)</text>
+    <text x="150" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#64748b">N NoiseModels sampled from the envelope</text>
+  </g>
+
+  <!-- ARROW 2 -->
+  <g transform="translate(760 195)">
+    <line x1="0" y1="0" x2="55" y2="0" stroke="#06b6d4" stroke-width="1.5" opacity="0.8"/>
+    <polygon points="55,-6 68,0 55,6" fill="#06b6d4"/>
+    <text x="34" y="-14" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#06b6d4" letter-spacing="2">Aer</text>
+    <text x="34" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">simulate</text>
+  </g>
+
+  <!-- PANEL 3: INTERVAL -->
+  <g transform="translate(850 70)">
+    <text x="150" y="0" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#06b6d4" letter-spacing="3">INTERVAL</text>
+    <text x="150" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">bracketed prediction</text>
+
+    <rect x="0" y="40" width="300" height="210" rx="6" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- interval band -->
+    <rect x="65" y="165" width="170" height="70" fill="#06b6d4" fill-opacity="0.10" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="3 2" rx="3"/>
+
+    <!-- left and right bound markers -->
+    <line x1="65" y1="155" x2="65" y2="245" stroke="#06b6d4" stroke-width="1.4"/>
+    <line x1="235" y1="155" x2="235" y2="245" stroke="#06b6d4" stroke-width="1.4"/>
+    <text x="65" y="148" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#a3b8ff">p_lo</text>
+    <text x="235" y="148" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#a3b8ff">p_hi</text>
+
+    <!-- axis -->
+    <line x1="30" y1="200" x2="270" y2="200" stroke="#64748b" stroke-width="1"/>
+
+    <!-- real hardware point inside the interval (the "scan" effect) -->
+    <circle cx="155" cy="200" r="6" fill="#10b981" filter="url(#glow2)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="140;170;140" dur="6s" repeatCount="indefinite"/>
+    </circle>
+
+    <text x="150" y="92" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#10b981" font-weight="600">real IBM ∈ [p_lo, p_hi]</text>
+    <text x="150" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#64748b">across calibration cycles, not just one</text>
+  </g>
+
+  <!-- Bottom signature -->
+  <text x="600" y="355" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" letter-spacing="2">SUPERCONDUCTED  ·  FACTORY / ENSEMBLE PATTERN  ·  IT2 FUZZY ENVELOPE</text>
+</svg>
