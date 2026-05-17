@@ -61,6 +61,18 @@ Architecture detail: [`docs/architecture.md`](https://github.com/SuperconducTED/
 
 A crisp `T1 = 142 µs` is what Aer wants. A real backend that just got recalibrated wants a *range* of plausible values weighted by membership. We fuzzify the snapshot through the TSK rule base, sample N concrete `NoiseModel` instances from the resulting envelope, run each through Aer in parallel, and report `[p_lo, p_hi]` instead of a single fidelity number. The win is that the real IBM datapoint lives **inside the interval** the next time the backend gets recalibrated, which is what crisp baselines stop doing the moment the snapshot they were tuned on goes stale.
 
+## ❯ Why Interval Type-2
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SuperconducTED/.github/main/it2.svg" alt="Type-1 fuzzy versus Interval Type-2 fuzzy: a sharp membership curve versus a band of plausible curves" width="100%">
+</p>
+
+A Type-1 TSK rule asks for the membership of a calibration value and gets back a single number: `μ(T1 = 142 µs) = 0.85`. The curve commits to an exact membership grade at every point, and it commits to an exact `T1` where that membership peaks. We don't have that much confidence: calibration drift moves not just the parameter, but our *belief* about the parameter, including where the "prototypical" value sits.
+
+Interval Type-2 (**IT2**) loosens both at once. Membership at each calibration value becomes an **interval**: `μ(T1 = 142 µs) ∈ [0.55, 0.85]`. The peak becomes a **plateau** rather than a point, because we're not sure exactly where the membership function tops out either. The band between the upper membership function (**UMF**) and the lower membership function (**LMF**) is the **footprint of uncertainty** · it says "the membership function lives somewhere in here, and we don't insist on which curve, or on where exactly it peaks."
+
+The ensemble we sample from an IT2-TSK rule base is correspondingly richer than what a Type-1 base could produce. That extra richness is exactly why the interval prediction in the previous diagram brackets real hardware **across cycles** instead of just the snapshot it was tuned on. T1 is the noise channel; T2 is how unsure we're allowed to be about it.
+
 ## ❯ Stack
 
 <p align="center">
