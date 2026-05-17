@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Type-1 fuzzy returns a single membership number; Interval Type-2 returns a range, and its peak is a plateau rather than a single point">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b0d17"/>
+      <stop offset="50%" stop-color="#0f1226"/>
+      <stop offset="100%" stop-color="#0b0d17"/>
+    </linearGradient>
+    <filter id="glow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="380" fill="url(#bg3)" rx="10"/>
+
+  <!-- top label strip -->
+  <text x="600" y="32" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#475569" letter-spacing="3">TYPE-1 ANSWERS WITH A NUMBER  ·  INTERVAL TYPE-2 ANSWERS WITH AN INTERVAL</text>
+
+  <!-- PANEL 1: TYPE-1 -->
+  <g transform="translate(30 70)">
+    <text x="270" y="0" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#06b6d4" letter-spacing="3">TYPE-1</text>
+    <text x="270" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">scalar membership per x</text>
+
+    <rect x="0" y="40" width="540" height="220" rx="6" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- axis -->
+    <line x1="40" y1="220" x2="500" y2="220" stroke="#64748b" stroke-width="1"/>
+    <line x1="40" y1="215" x2="40" y2="225" stroke="#64748b" stroke-width="1"/>
+    <line x1="500" y1="215" x2="500" y2="225" stroke="#64748b" stroke-width="1"/>
+    <text x="40" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">100µs</text>
+    <text x="500" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">200µs</text>
+    <text x="270" y="252" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">T1</text>
+
+    <!-- single membership function (clean triangle) -->
+    <path d="M 80 220 L 270 80 L 460 220 Z" fill="#7f5af0" fill-opacity="0.18" stroke="#7f5af0" stroke-width="1.8"/>
+
+    <!-- y axis labels -->
+    <text x="22" y="82" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#a3b8ff">1</text>
+    <text x="22" y="224" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#a3b8ff">0</text>
+
+    <!-- function label -->
+    <text x="270" y="66" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#a3b8ff">μ(T1)</text>
+
+    <!-- sample x: vertical reference at x=180, hits curve at y=146 -->
+    <line x1="180" y1="220" x2="180" y2="146" stroke="#06b6d4" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"/>
+    <line x1="174" y1="146" x2="186" y2="146" stroke="#06b6d4" stroke-width="1.6"/>
+    <text x="193" y="151" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#06b6d4" font-weight="600">μ = 0.53</text>
+    <text x="193" y="166" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#64748b">one number</text>
+
+    <!-- sampled point traveling along the curve -->
+    <circle r="4.5" fill="#06b6d4" filter="url(#glow3)">
+      <animate attributeName="cx" values="80;175;270;365;460;365;270;175;80" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="220;150;80;150;220;150;80;150;220" dur="8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- bottom caption -->
+    <text x="270" y="290" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">one curve  ·  one μ per x</text>
+  </g>
+
+  <!-- PANEL 2: INTERVAL TYPE-2 -->
+  <g transform="translate(630 70)">
+    <text x="270" y="0" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#06b6d4" letter-spacing="3">INTERVAL TYPE-2</text>
+    <text x="270" y="22" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">interval membership per x  ·  peak is a region</text>
+
+    <rect x="0" y="40" width="540" height="220" rx="6" fill="none" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- axis -->
+    <line x1="40" y1="220" x2="500" y2="220" stroke="#64748b" stroke-width="1"/>
+    <line x1="40" y1="215" x2="40" y2="225" stroke="#64748b" stroke-width="1"/>
+    <line x1="500" y1="215" x2="500" y2="225" stroke="#64748b" stroke-width="1"/>
+    <text x="40" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">100µs</text>
+    <text x="500" y="240" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">200µs</text>
+    <text x="270" y="252" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#475569">T1</text>
+
+    <!-- FOU: filled band between UMF (trapezoid) and LMF (triangle) -->
+    <path d="M 60 220 L 200 80 L 340 80 L 480 220 L 450 220 L 270 115 L 90 220 Z" fill="#06b6d4" fill-opacity="0.18" stroke="none"/>
+
+    <!-- UMF: trapezoid with plateau from x=200 to x=340 -->
+    <path d="M 60 220 L 200 80 L 340 80 L 480 220" fill="none" stroke="#7f5af0" stroke-width="1.7"/>
+    <!-- LMF: triangle peaking at (270, 115) (dashed) -->
+    <path d="M 90 220 L 270 115 L 450 220" fill="none" stroke="#7f5af0" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.85"/>
+
+    <!-- y axis labels -->
+    <text x="22" y="82" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#a3b8ff">1</text>
+    <text x="22" y="224" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#a3b8ff">0</text>
+
+    <!-- function labels -->
+    <text x="380" y="78" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#7f5af0">UMF</text>
+    <text x="380" y="156" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#7f5af0" opacity="0.85">LMF</text>
+    <text x="270" y="56" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="11" fill="#06b6d4">FOU</text>
+
+    <!-- plateau marker · subtle horizontal line on top to emphasize "peak is a region" -->
+    <line x1="200" y1="74" x2="340" y2="74" stroke="#06b6d4" stroke-width="0.8" stroke-dasharray="2 3" opacity="0.7"/>
+    <text x="270" y="68" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#06b6d4" opacity="0.7" letter-spacing="1">peak as plateau</text>
+
+    <!-- sample x: vertical reference at x=180 -->
+    <!-- dashed below the bracket (between axis and LMF) -->
+    <line x1="180" y1="220" x2="180" y2="167" stroke="#06b6d4" stroke-width="1" stroke-dasharray="2 2" opacity="0.55"/>
+    <!-- interval bracket itself (LMF to UMF) -->
+    <line x1="180" y1="167" x2="180" y2="100" stroke="#06b6d4" stroke-width="2.4"/>
+    <line x1="174" y1="100" x2="186" y2="100" stroke="#06b6d4" stroke-width="1.6"/>
+    <line x1="174" y1="167" x2="186" y2="167" stroke="#06b6d4" stroke-width="1.6"/>
+
+    <!-- interval value text -->
+    <text x="193" y="130" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="12" fill="#06b6d4" font-weight="600">μ ∈ [0.4, 0.9]</text>
+    <text x="193" y="146" text-anchor="start" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="9" fill="#64748b">an interval</text>
+
+    <!-- sample points scattered in the FOU -->
+    <g fill="#06b6d4" filter="url(#glow3)">
+      <circle cx="225" cy="130" r="3.5"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" repeatCount="indefinite"/></circle>
+      <circle cx="248" cy="100" r="3.5"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="0.4s" repeatCount="indefinite"/></circle>
+      <circle cx="278" cy="92" r="3.5"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="0.8s" repeatCount="indefinite"/></circle>
+      <circle cx="308" cy="100" r="3.5"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="1.2s" repeatCount="indefinite"/></circle>
+      <circle cx="335" cy="130" r="3.5"><animate attributeName="opacity" values="0.25;1;0.25" dur="2.6s" begin="1.6s" repeatCount="indefinite"/></circle>
+    </g>
+
+    <!-- bottom caption -->
+    <text x="270" y="290" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#64748b">a band of curves  ·  an interval of μ per x</text>
+  </g>
+
+  <!-- Bottom signature -->
+  <text x="600" y="355" text-anchor="middle" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="10" fill="#475569" letter-spacing="2">FOOTPRINT OF UNCERTAINTY  ·  THE MEMBERSHIP OF THE MEMBERSHIP</text>
+</svg>
