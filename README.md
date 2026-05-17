@@ -7,11 +7,7 @@
 -->
 
 <p align="center">
-  <img src="./assets/header.svg" alt="SuperconducTED · The TED in superconducted · TED University · Ankara" width="100%">
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=17&duration=3200&pause=900&color=06B6D4&center=true&vCenter=true&width=780&lines=Fuzzy+logic+%C2%B7+quantum+noise+%C2%B7+Qiskit+Aer;Research+preview+%C2%B7+TED+University+%C2%B7+Ankara;Bracketing+IBM+hardware+across+calibration+cycles" alt="tagline" />
+  <img src="./assets/header.svg" alt="SuperconducTED · TED University · Ankara" width="100%">
 </p>
 
 <p align="center">
@@ -29,7 +25,7 @@
 
 ---
 
-## ❯ Abstract
+## ❯ Manifesto
 
 Qiskit Aer accepts **crisp** numbers for noise. Real superconducting qubits drift between every IBM calibration. We close the gap with a Takagi·Sugeno·Kang fuzzy inference layer that turns calibration snapshots into an *ensemble* of `NoiseModel` instances, then aggregates simulations into **interval-valued** predictions that bracket real hardware across calibration cycles.
 
