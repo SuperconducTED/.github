@@ -140,7 +140,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
     <tr>
       <td align="center"><b>1</b></td>
       <td>≥ 630 snapshot dataset</td>
-      <td><img src="https://img.shields.io/badge/accumulating-f59e0b?style=flat-square" alt="accumulating"> 24/day via CI · ~4 weeks to floor</td>
+      <td><img src="https://img.shields.io/badge/accumulating-f59e0b?style=flat-square" alt="accumulating"> accumulating via hourly CI · floor projected for mid-July 2026</td>
     </tr>
     <tr>
       <td align="center"><b>2</b></td>
@@ -157,7 +157,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
 
 ## ❯ Now shipping
 
-> Phase 0 deliverable is live. `superconducted-poll` archives IBM backend calibration snapshots, driven by a GitHub Actions workflow that fires hourly against `ibm_fez`. Phase 1 is dataset accumulation: 24 snapshots/day, with the ≥ 630 ANFIS-training floor roughly four weeks out.
+> Phase 0 deliverable is live. `superconducted-poll` archives IBM backend calibration snapshots, driven by a GitHub Actions workflow that fires hourly against `ibm_fez`. Phase 1 is dataset accumulation: targeting ~24 snapshots/day, with the ≥ 630 ANFIS-training floor projected for mid-July 2026.
 
 ## ❯ Field notes
 
@@ -227,7 +227,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
   Aer is the standard. Pulse-level simulators (Qiskit Dynamics and friends) are more accurate per snapshot but slower by orders of magnitude. Our value proposition is *transferability across snapshots*, so we want the fast inner loop. The fuzzy envelope absorbs the per-snapshot accuracy gap.
 
   **What's the ≥ 630 number?**
-  The team's working minimum for ANFIS training · enough historical records that rule consequents can be fit without overfitting. At the current hourly cadence (24 snapshots/day from the `Calibration Polling` workflow against `ibm_fez`), reaching it takes roughly four weeks of uninterrupted polling.
+  The team's working minimum for ANFIS training · enough historical records that rule consequents can be fit without overfitting. At hourly polling against ibm_fez, with realistic GitHub Actions scheduler losses factored in, reaching the floor takes roughly two months from the start of cycle 1 polling.
 
   **Can I use this without an IBM Quantum account?**
   For the polling stage, no. For the noise modeling stage, yes: bring your own calibration JSON in the documented schema and the engine doesn't care where it came from.
