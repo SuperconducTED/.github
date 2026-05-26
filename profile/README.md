@@ -29,7 +29,11 @@
 
 Qiskit Aer accepts **crisp** numbers for noise. Real superconducting qubits drift between every IBM calibration. We close the gap with a Takagi·Sugeno·Kang fuzzy inference layer that turns calibration snapshots into an *ensemble* of `NoiseModel` instances, then aggregates simulations into **interval-valued** predictions that bracket real hardware across calibration cycles.
 
-If `0.686%` fidelity deviation on a single snapshot is the bar (Bautra et al., 2026), **transferability across snapshots** is the rope we're trying to climb past it.
+Crisp calibration-based noise models match real hardware tightly on the 
+snapshot they were tuned on and degrade silently once that snapshot goes 
+stale. **Transferability across calibration cycles** is the rope we're 
+trying to climb past that limit · the fuzzy envelope is what gives the 
+ensemble somewhere to go when the calibration moves.
 
 ## ❯ The pipeline
 
@@ -145,7 +149,7 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
     </tr>
     <tr>
       <td align="center"><b>3</b></td>
-      <td>Whitepaper · benchmark vs. Bautra 2026</td>
+      <td>Whitepaper · benchmark against published calibration-based baselines</td>
       <td><img src="https://img.shields.io/badge/planned-64748b?style=flat-square" alt="planned"></td>
     </tr>
   </tbody>
@@ -161,9 +165,12 @@ The ensemble we sample from an IT2-TSK rule base is correspondingly richer than 
 
 - **Phase 0 · shipped.** Calibration polling pipeline went live with the `superconducted-poll` console script. Cron-friendly, idempotent, one invocation per round. → [flagship repo](https://github.com/SuperconducTED/superconducted-noise-engine)
 - **ADR · Factory · Ensemble pattern adopted.** Aer's no-per-shot-Python-hook constraint forced the design hand: epistemic uncertainty has to be realised at *ensemble construction* time, not per shot. → [`docs/decisions.md`](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/decisions.md)
-- **Decision · benchmark target locked.** Bautra et al. 2026's `0.686%` fidelity deviation chosen as the single-snapshot bar. Our differentiator is *transferability*, not snapshot accuracy.
 - **Hourly polling, in CI.** The `Calibration Polling` GitHub Actions workflow fires at HH:05 every hour, runs `superconducted-poll --backend ibm_fez`, and verifies the poller produced files before committing. Concurrency control keeps overlapping runs from racing each other.
 - **Git as the calibration database.** Snapshots are committed to a dedicated `calibration-data` branch, organised as `snapshots/YYYY-MM/ibm_fez/*.json`. Keeps `main` clean; provenance is just `git log`. Historical backfill remains capped at 30 days via `SUPERCONDUCTED_HISTORICAL_MAX_DAYS`.
+- **Audit · first ADR cycle closed.** 22 ADRs reviewed, 2 patched in 
+  place, 6 new drafts, 8 follow-up issues filed. The full synthesis 
+  lives under `docs/state-of-the-project/`. 
+  → [audit report](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/audits/2026-05-25-first-cycle-audit.md)
 
 <sub>Want to write the next entry? See the <a href="https://github.com/SuperconducTED/superconducted-noise-engine/issues">open issues</a> on the flagship.</sub>
 
