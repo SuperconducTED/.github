@@ -14,7 +14,7 @@ engine for Qiskit Aer that answers a drifting machine with a range, not a single
 | Path | What it holds |
 | --- | --- |
 | [`profile/README.md`](profile/README.md) | The page GitHub shows at [github.com/SuperconducTED](https://github.com/SuperconducTED) |
-| [`header.svg`](header.svg), [`fuzzy-noise.svg`](fuzzy-noise.svg), [`it2.svg`](it2.svg) | The images that page loads by raw URL. `header.svg` is a copy of `brand/web/profile-header.svg`: rebuild the brand and copy it again rather than editing it by hand |
+| [`header.svg`](header.svg), [`fuzzy-noise.svg`](fuzzy-noise.svg), [`it2.svg`](it2.svg) | Images from the profile's earlier long form (a copy of `brand/web/profile-header.svg` and two explainer diagrams). Since 2026-10-16 the profile loads only the stacked lockup from `brand/svg/`, so nothing on the page uses them |
 | [`brand/`](brand/README.md) | The SuperconducTED identity: the cutaway mark and the mathematics behind it, lockups, the Cryostat palette, typography, the chart style, every file format, and the scripts that build and check them |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | The organisation's code of conduct: the Contributor Covenant 2.1 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | The organisation's general contributing guide, with the rules for this repository at the end |
