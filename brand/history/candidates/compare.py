@@ -1,7 +1,7 @@
 """Side-by-side comparison of the four round-3 candidates, composed in VectorCraft.
 
 Usage (from the repository root, after each candidate's build.py has run):
-    python -I brand/candidates/compare.py brand/candidates
+    python -I brand/history/candidates/compare.py brand/history/candidates
 
 Reads <folder>/<style>/hero-1024.png, hero-white-on-black.png, small-32.png and small-16.png
 and writes <folder>/compare.png.

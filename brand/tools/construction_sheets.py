@@ -2,7 +2,7 @@
 mathematics behind the logo, drawn in VectorCraft from the mark's own geometry.
 
 Called by build_brand.Kit.construction() as build(kit, mod), where `kit` is the open Kit (its
-VectorCraft session, new() and export()) and `mod` is brand/candidates/cutaway/mark.py as
+VectorCraft session, new() and export()) and `mod` is brand/mark/mark.py as
 build_brand.load_mark() imported it. Through kit.export (so the kit's manifest and
 check_brand.py cover every file) it writes into <kit>/guide/:
 
@@ -239,7 +239,7 @@ class Ctx:
         self.small = Trace(mod.small_art)
         self.small16 = Trace(mod.small16_art)
         self.stages = stage_names(mod)
-        self.source = f"brand/candidates/{kit.mark_name}/mark.py"
+        self.source = "brand/mark/mark.py"
         self.U = mod.UNITS["hero"]
         # The construction() summary of mark.py must agree with what hero_art() drew.
         g, h = mod.construction(), self.hero

@@ -9,13 +9,14 @@ at 260 or more path characters):
 The first form writes the whole kit for one mark and one palette into <folder>: lockups, colour
 variants, web icons, the organisation avatar, the profile banner, social cards, a README header,
 guide images and a manifest that check_brand.py verifies. The second renders the team's decision
-aids into brand/decision/ (each candidate in use, and every palette on every candidate), building
+aids into brand/history/decision/ (each candidate in use, and every palette on every candidate), building
 each candidate's kit in <folder>/<mark>/ on the way, which also tests the generator end to end.
 
-Inputs: brand/candidates/<mark>/mark.py (the mark API in brand/candidates/MARK_API.md),
+Inputs: brand/mark/mark.py for the chosen mark (palettes.MARK) and brand/history/candidates/<mark>/mark.py
+for the others (the mark API in brand/history/candidates/MARK_API.md),
 brand/tools/palettes.py (the palette options), Space Grotesk and Space Mono installed in
 VectorCraft (brand/tools/install_fonts.py). Standard library only.
-Side effects: writes only inside --out, --scratch and brand/decision/.
+Side effects: writes only inside --out, --scratch and brand/history/decision/.
 Every number of the layouts lives in the constants below; edit them here, never the outputs.
 """
 import argparse
@@ -30,7 +31,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 BRAND = os.path.dirname(HERE)
 # SC_CANDIDATES points the generator at another candidates folder; it exists for testing the
 # layouts with a stand-in mark and is not needed for normal use.
-CANDIDATES = os.environ.get("SC_CANDIDATES") or os.path.join(BRAND, "candidates")
+CANDIDATES = os.environ.get("SC_CANDIDATES") or os.path.join(BRAND, "history", "candidates")
+# The chosen mark (palettes.MARK) lives in brand/mark/, outside the history of candidates.
+CHOSEN_MARK_DIR = os.path.join(BRAND, "mark")
 sys.path.insert(0, HERE)
 from vcdriver import VC  # noqa: E402
 from wcag import contrast  # noqa: E402
@@ -99,10 +102,13 @@ def variants(p):
 
 # ---------------------------------------------------------------- the mark
 def load_mark(name):
-    """Import brand/candidates/<name>/mark.py under a unique module name. Modules it imports
+    """Import the mark API of <name> (brand/mark/mark.py for the chosen mark, else
+    brand/history/candidates/<name>/mark.py) under a unique module name. Modules it imports
     from its own folder (for example its build.py) are dropped from sys.modules afterwards, so
     four candidates with same-named helpers can be loaded in one process."""
-    folder = os.path.join(CANDIDATES, name)
+    # SC_CANDIDATES (a test folder) holds every mark, the chosen one included.
+    chosen = name == palettes.MARK and not os.environ.get("SC_CANDIDATES")
+    folder = CHOSEN_MARK_DIR if chosen else os.path.join(CANDIDATES, name)
     modname = f"sc_mark_{name}"
     before = set(sys.modules)
     sys.path.insert(0, folder)
@@ -672,7 +678,8 @@ def palette_sheet(vc, scratch, out_png, figures_demo=None):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     # Defaults are the identity's own choices (palettes.MARK and palettes.CHOSEN, 2026-10-16), so
-    # `build_brand.py --out brand/kit` rebuilds the official kit.
+    # `build_brand.py --out <short folder>` rebuilds the official kit; copy its seven folders and
+    # manifest.json into brand/ (VectorCraft writes nothing at 260+ path characters).
     ap.add_argument("--mark", choices=MARKS, default=palettes.MARK)
     ap.add_argument("--palette", choices=list(palettes.OPTIONS) + ["neutral"], default=palettes.CHOSEN)
     ap.add_argument("--out")
@@ -683,7 +690,7 @@ def main():
         raise SystemExit(f"palette contrast failures: {palettes.check()}")
     if a.decision:
         # The engine is confined to the scratch folder: the chart demos are copied in first and
-        # the finished sheets copied out to brand/decision/ at the end.
+        # the finished sheets copied out to brand/history/decision/ at the end.
         if not a.scratch:
             raise SystemExit("--decision needs --scratch <short folder>")
         scratch = os.path.abspath(a.scratch)
@@ -700,7 +707,7 @@ def main():
                 in_use_sheet(vc, kit_dir, m, sheets[-1])
             sheets.append(os.path.join(scratch, "palettes.png"))
             palette_sheet(vc, scratch, sheets[-1], figures_demo=demo if os.path.isdir(demo) else None)
-        decision = os.path.join(BRAND, "decision")
+        decision = os.path.join(BRAND, "history", "decision")
         os.makedirs(decision, exist_ok=True)
         for s in sheets:
             shutil.copyfile(s, os.path.join(decision, os.path.basename(s)))

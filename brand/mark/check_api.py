@@ -1,4 +1,4 @@
-"""Acceptance tests of ../MARK_API.md for the cutaway candidate, measured on exported files.
+"""Acceptance tests of ../history/candidates/MARK_API.md for the cutaway mark, measured on exported files.
 
   (a) Rebuild: runs build.py (neutral colours: ink #1A1D24, paper #F2EEE6, accent = ink) and
       compares hero.svg, hero-black.svg, small.svg, small-16.svg byte for byte, and hero-1024.png,
@@ -34,7 +34,7 @@ import zlib
 sys.dont_write_bytecode = True
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(1, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools"))
+sys.path.insert(1, os.path.join(os.path.dirname(HERE), "tools"))
 import mark  # noqa: E402
 from build import BLACK, NEUTRAL  # noqa: E402
 from vcdriver import VC, fresh_export  # noqa: E402

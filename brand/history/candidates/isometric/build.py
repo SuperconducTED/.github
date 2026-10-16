@@ -27,7 +27,7 @@ sys.dont_write_bytecode = True
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
-TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "tools"))
+TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "..", "tools"))
 sys.path.insert(0, TOOLS)
 sys.path.insert(0, HERE)   # python -I leaves the script's folder off sys.path
 from vcdriver import VC, fresh_export  # noqa: E402

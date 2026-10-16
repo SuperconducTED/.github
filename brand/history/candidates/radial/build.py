@@ -38,7 +38,7 @@ import sys
 
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = os.path.dirname(os.path.abspath(__file__))
-TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "tools"))
+TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "..", "tools"))
 sys.path.insert(0, HERE)
 sys.path.insert(0, TOOLS)
 from vcdriver import VC  # noqa: E402

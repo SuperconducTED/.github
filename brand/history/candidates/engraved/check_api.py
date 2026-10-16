@@ -1,7 +1,7 @@
 """Acceptance checks for the engraved candidate's mark API (../MARK_API.md).
 
 Usage (from the repository root or anywhere; standard library only):
-    python -I brand/candidates/engraved/check_api.py [--no-build]
+    python -I brand/history/candidates/engraved/check_api.py [--no-build]
 
 What it proves, with numbers:
   (a) build.py, drawing everything through mark.draw_mark with the neutral palette (accent =
@@ -69,8 +69,8 @@ def _audit(event, args):
 
 
 sys.addaudithook(_audit)
-TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "tools"))
-REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "..", "tools"))
+REPO = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 sys.path.insert(0, TOOLS)
 sys.path.insert(0, HERE)
 from vcdriver import VC, fresh_export  # noqa: E402
