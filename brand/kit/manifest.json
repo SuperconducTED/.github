@@ -645,6 +645,66 @@
       "source": false
     },
     {
+      "stem": "construction-1-overview",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "construction-1-overview.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "construction-2-refrigerator",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "construction-2-refrigerator.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "construction-3-dial",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "construction-3-dial.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "construction-4-interval",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "construction-4-interval.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "construction-5-lines-and-small-marks",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "construction-5-lines-and-small-marks.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
       "stem": "clear-space",
       "folder": "guide",
       "colours": [],

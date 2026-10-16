@@ -499,6 +499,8 @@ class Kit:
             json.dump(dict(key=self.key, palette=p, cmyk_percent=cmyk, cmyk_gamut=gamut,
                            cmyk_profile="VectorCraft Generic CMYK (SWOP-like)",
                            ratios={k: round(v, 2) for k, v in rs.items()}), f, indent=2)
+        if callable(getattr(self.mod, "construction", None)):
+            self.construction()
         # Clear space around the primary lockup.
         v = self.v["on-light"]
         self.new("clear-space", 1700, 700, "SuperconducTED clear space", "Keep X = 0.25 H free on every side.")
@@ -515,6 +517,14 @@ class Kit:
             rect(vc, qx, qy, X, X, "#F3D9CF")
         sized(vc, "X = 0.25 H, where H is the height of the mark", ox - X, oy + h + X + 50, 22, "#111111")
         self.export("clear-space", folder="guide", print_files=False, png=[("", 1)], source=False, transparent=False)
+
+    def construction(self):
+        """guide/construction-{1..5}-*.{svg,png}: five construction sheets that teach the mark's
+        mathematics (overview, refrigerator, dial, interval, line types and small marks), drawn
+        by construction_sheets.build from the mark's own geometry. Every file goes through
+        export(), so the manifest and check_brand.py cover it."""
+        import construction_sheets  # noqa: E402 - imported here: only a mark with construction() needs it
+        construction_sheets.build(self, self.mod)
 
     def board(self):
         """One overview image: lockups on both grounds, the mark small, the card."""

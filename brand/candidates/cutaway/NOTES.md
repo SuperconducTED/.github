@@ -140,3 +140,13 @@ Verified on the exported files, not on the in-memory geometry:
 - Risk at small sizes: the favicon is a ring with marks inside it, which is the family most
   likely to be confused with CASSANDRA's ring-and-dashes mark at 16 px; the square chip and
   square brackets are the differentiators and should be kept bold in any revision.
+
+## Correction, 2026-10-16
+
+Item 4 above says the snapshot point sits inside the interval "but not at its centre". The
+geometry says otherwise: the current chip is 60 units right of the datum and the earlier
+position 60 units left (`CHIP_NOW = (60, -8)`, `CHIP_PAST = [(-60, 14)]`), so the brackets span
+384 to 616 and are centred on the datum at x = 500 (`mark.construction()`, drawn in the kit's
+`guide/construction.png`). The text above is kept as written; the brand guide states the
+corrected reading. Making the interval visibly lopsided would mean moving a chip position, a
+change to the mark the team chose, and is the owner's call.
