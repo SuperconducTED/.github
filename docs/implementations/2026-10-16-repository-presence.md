@@ -24,7 +24,7 @@ So the flagship showed no description or topics in search, on the organisation p
 
 | File | Description |
 |---|---|
-| `docs/implementations/2026-10-16-repository-presence.md` | This record: the approved settings, descriptions, topics and homepages, and which social card goes on which repository. |
+| `docs/implementations/2026-10-16-repository-presence.md` | This record: the approved settings, descriptions and topics, the pending homepages, and which social card goes on which repository. |
 
 Nothing else in the tree. Repository settings live outside it; the engine's README header is a separate engine pull request (below).
 
@@ -41,21 +41,21 @@ Not approved, so unchanged: Discussions for superconducted-codesign. Its questio
 
 The owner approved these "once the .github pull request merges", and on 2026-10-16 confirmed right after the merge rather than right before it. For the minutes in between, the merged `SECURITY.md` names a report form, and the default `config.yml` and `SUPPORT.md` link a Q&A page, that do not exist yet; they are flipped immediately after the merge and read back.
 
-### 2. Descriptions, topics and homepages (approved by the owner on 2026-10-16, to apply when this branch merges)
+### 2. Descriptions and topics (approved by the owner on 2026-10-16, to apply when this branch merges); homepages pending
 
 Descriptions follow the Collective's pattern: what the project is, in one sentence a stranger understands, with its status. Topics favour names other repositories already use, so the project shows up on those topic pages; the counts are `gh api "search/repositories?q=topic:<name>"` on 2026-10-16.
 
 **superconducted-noise-engine**
 
 - Description (208 characters): "Fuzzy-logic noise engine for Qiskit Aer: turns IBM calibration snapshots into an ensemble of noise models, aiming for interval predictions that track real hardware across calibration cycles. Research preview."
-- Homepage: `https://github.com/SuperconducTED` (the organisation page; the project has no website).
+- Homepage: blank, pending the organisation's website decision (see Design Decisions).
 - Topics (13): `quantum-computing` (6,346 repositories), `qiskit` (1,928), `qiskit-aer` (61), `ibm-quantum` (216), `superconducting-qubits` (70), `quantum-noise` (32), `noise-model` (12), `fuzzy-logic` (1,280), `takagi-sugeno-kang` (8), `anfis` (75), `uncertainty-quantification` (1,552), `calibration` (2,539), `python`.
 - Left out: `type-2-fuzzy` and `interval-type-2-fuzzy` (0 repositories each), `noise-modeling` (14, a near-duplicate of `noise-model`).
 
 **`.github`**
 
 - Description (179 characters): "SuperconducTED's organisation profile, its brand (the cutaway mark, the Cryostat palette and the scripts that build them) and the community health files every repository inherits."
-- Homepage: `https://github.com/SuperconducTED`.
+- Homepage: blank, pending the organisation's website decision (see Design Decisions).
 - Topics (5): `brand-guidelines`, `brand-identity` (168), `design-system`, `logo` (the Collective's four), and `community-health` (624).
 
 **superconducted-codesign** (private, so only members see any of this)
@@ -64,7 +64,7 @@ Descriptions follow the Collective's pattern: what the project is, in one senten
 - Homepage: none.
 - Topics (4): `requirements` (832), `software-requirements-specification` (12), `co-design` (45), `quantum-computing`.
 
-Apply, after the merge, with `gh repo edit SuperconducTED/<repo> --description "..." --homepage "..." --add-topic <a>,<b>,...`, then read back with `gh api repos/SuperconducTED/<repo> --jq '{description,homepage,topics}'`.
+Apply, after the merge, with `gh repo edit SuperconducTED/<repo> --description "..." --add-topic <a>,<b>,...` (no `--homepage` until the website is chosen), then read back with `gh api repos/SuperconducTED/<repo> --jq '{description,homepage,topics}'`.
 
 ### 3. Social previews (the owner uploads by hand)
 
@@ -99,7 +99,7 @@ None.
 |---|---|---|---|
 | One card per repository, as the kit provides | The organisation card everywhere | The kit was built that way; the Collective did the same | Brand kit, pull request #1 |
 | The organisation card (with the tagline) on `.github` | No card there | `.github` is the organisation's home; its card is the one with the tagline | Engineering; the owner reviews it at upload |
-| Homepage = the organisation page for the two public repositories | Empty; `docs/architecture.md` | Gives a route back to the organisation from a repository found by search; the Collective's choice where a project has no site | Engineering; approved by the owner, 2026-10-16 |
+| Homepage left blank on every repository until the organisation's website is chosen | The organisation page (first drafted, and approved earlier the same day); `docs/architecture.md` | The owner is choosing a website (`superconducted.dev` or `superconducted.io` under evaluation) and asked for blank homepages until then. `superconducted.com` and `superconducted.org` are registered to someone else (since 2025-07-18) and are never used as a homepage or in any link | Owner, 2026-10-16, relayed by the lead session |
 | Topics chosen from names other repositories use | Coining exact names for interval type-2 fuzzy logic | A topic nobody else uses leads nowhere | Engineering; approved by the owner, 2026-10-16 |
 | Settings applied only on the owner's word, then read back | Applying them without asking | They are public-facing and outside the tree | Owner's standing rule |
 
