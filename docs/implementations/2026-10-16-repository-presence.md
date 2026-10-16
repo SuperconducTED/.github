@@ -116,3 +116,15 @@ After each change, the read-back command in its row, and `gh api repos/Supercond
 - [`2026-10-16-community-health-files.md`](2026-10-16-community-health-files.md), [`2026-10-16-licence.md`](2026-10-16-licence.md)
 - [`brand/README.md`](../../brand/README.md), "Digital applications"
 - The pattern this follows: `Cassandra-Collective/.github`, `docs/implementations/2026-10-14-project-cards-and-org-move.md` and `2026-10-15-discussions-qa.md`
+
+## As of 2026-10-16, later: website chosen, homepages set, paths moved
+
+- The website is <https://superconducted.github.io/> (GitHub Pages, Mert's choice for budget
+  reasons). The homepage of `superconducted-noise-engine` and `.github` was set to it on
+  2026-10-16 and read back; the "blank until the website is chosen" rows above are superseded.
+- The organisation profile fields were set the same day: name "SuperconducTED", the description
+  "Student research at TED University: honest noise models for superconducting quantum
+  computers.", the website, and the location "Ankara, Türkiye" (read back).
+- The cards to upload now live in `brand/web/`, not `brand/kit/web/`, and the engine's README
+  header loads `brand/web/readme-header-noise-engine.svg`.
+- Mert dropped the rule against naming `superconducted-codesign` in public files (2026-10-16).

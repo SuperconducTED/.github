@@ -134,3 +134,10 @@ None. This is a documentation and configuration change.
 - The pattern this follows: `Cassandra-Collective/.github`, `docs/implementations/2026-10-14-community-health-files.md` and `2026-10-15-discussions-qa.md`
 - The engine's conventions: [`docs/team.md`](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/team.md), [`docs/decisions.md`](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/decisions.md), [`docs/numerical-claims.md`](https://github.com/SuperconducTED/superconducted-noise-engine/blob/main/docs/numerical-claims.md)
 - GitHub Docs: [Creating a default community health file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file), [Configuring issue templates for your repository](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository), [Syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
+
+## As of 2026-10-16, later
+
+Rebased unchanged onto `main` @ `68e40e7` as branch `docs/organisation-home`, which also moves
+the brand kit and rewrites the READMEs (`2026-10-16-organisation-home.md`). The decision row
+"Not naming superconducted-codesign in public files" is superseded: Mert dropped that rule on
+2026-10-16.

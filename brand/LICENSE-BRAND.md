@@ -14,8 +14,9 @@ licence and indicate if you made changes. Suggested credit:
 
 ## The scripts: MIT
 
-The Python scripts under `brand/tools/`, `brand/figures/` and each candidate's folder
-(`build.py`, `mark.py`, `check_*.py` and the like) are licensed under the MIT licence, matching
+The Python scripts under `brand/tools/`, `brand/figures/`, `brand/mark/` and each candidate's
+folder in `brand/history/candidates/` (`build.py`, `mark.py`, `check_*.py` and the like) are
+licensed under the MIT licence, matching
 the SuperconducTED noise engine (owner decision, 2026-10-16):
 
 > Copyright (c) 2026 SuperconducTED contributors

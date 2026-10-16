@@ -5,17 +5,19 @@ This repository is licensed in two parts.
 
 1. MIT License (LICENSE): every file outside brand/ (the documentation, the
    organisation profile, the community files and the issue and pull request
-   templates), and the Python scripts inside brand/: brand/tools/, the scripts
-   in brand/figures/ and the scripts in each folder of brand/candidates/.
+   templates), and the Python scripts inside brand/: brand/tools/, brand/mark/,
+   the scripts in brand/figures/ and the scripts in each folder of
+   brand/history/candidates/.
 
 2. Creative Commons Attribution 4.0 International, CC BY 4.0
    (brand/LICENSE-BRAND.md): every other file under brand/, meaning the logo
    candidates, marks, lockups, icons, banners, cards, colour and type
    specifications, chart styles, and the images, documents and VectorCraft
-   sources in brand/kit/, brand/candidates/, brand/decision/ and
+   sources in brand/svg/, brand/png/, brand/pdf/, brand/eps/, brand/web/,
+   brand/source/, brand/guide/, brand/mark/, brand/history/ and
    brand/figures/. They may be shared and adapted, with credit.
 
-A file copied out of brand/ (for example a banner or card from brand/kit/web/
+A file copied out of brand/ (for example a banner or card from brand/web/
 used by the organisation profile) stays under CC BY 4.0 wherever it is.
 
 CC BY 4.0 does not license trademark rights (its section 2(b)(2)), and the
