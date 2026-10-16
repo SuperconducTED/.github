@@ -1,0 +1,10 @@
+# Build scratch written by the candidates' build.py scripts: intermediates, logs and review
+# renders. The review renders are PNGs, whose bytes change on every run (VectorCraft embeds a
+# timestamp), so tracking them would only produce noise.
+work/
+_work/
+__pycache__/
+build.log
+check-*.png
+hero-128.png
+hero-dark.png
