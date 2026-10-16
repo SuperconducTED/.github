@@ -257,3 +257,40 @@ reproduced exactly, all four exiting 0.
   the MIT text (identical to the engine's licence).
 - **Still only on the owner's word:** the organisation profile fields and avatar, replacing the
   profile banner and its two diagrams and badges, and uploading the social previews.
+
+## As of 2026-10-16, after PR #1 merged: the mathematics of the mark
+
+The owner asked what was still missing and narrowed it to the brand itself. Compared with the
+CASSANDRA Collective's guide, the brand lacked a construction drawing, an answer to the brief's
+five opening principles, a Projects section and a Notes section. The owner then set the bar:
+"Construction drawing should be very detailed. Because we did not generate an AI slop, this is
+real work, so people should know and learn the mathematics behind the logo."
+
+- **`brand/CONSTRUCTION.md`** (new): the mathematics of the mark in plain notation, every value
+  computed from `brand/candidates/cutaway/mark.py`: the design space and scale, line weights and
+  arc-length dash patterns (and the 34-unit phase that centres a centre line's short dash on a
+  crossing), 45 degree section hatching on a globally registered grid (c = k * 6 * sqrt(2)), the
+  six plates, support rods, the coax loom as cubic Beziers with a sine fan, the helical heat
+  exchanger as an orthographic helix whose cos(theta) sign picks solid or hidden, the dial (117 of
+  120 graduations, 129 of 180 knurl marks), the chip's winding-number lattice, the drift Bezier,
+  the interval equations, the small marks' pixel grids, minimum sizes from line widths, and the
+  colour, tint, chart-band and lockup formulas.
+- **Five construction sheets** in `brand/kit/guide/construction-{1..5}-*.{svg,png}`, drawn by the
+  new `brand/tools/construction_sheets.py` (one agent) from the mark's constants, its
+  `construction()` data and the geometry `hero_art()` emits; the build stops if `mark.py`
+  changes in a way the sheets do not understand. `mark.py` gains `construction()` (no change to
+  the drawing: `check_api.py` still reports 4/4 SVGs byte-identical and 5/5 PNGs
+  pixel-identical).
+- **A correction.** The brand guide and the cutaway's notes said the frozen snapshot sits off
+  the interval's centre. The geometry says the two chip positions are 60 units either side of
+  the datum, so the interval (384 to 616) is centred on it. Both texts now say so, marked as a
+  correction; changing the mark to make the interval lopsided is left to the owner.
+- **Guide additions:** "How the mark meets the brief" (the five principles), "Projects", and
+  "Notes" (the TED name and TED University's corporate identity guide, the TED Conferences word
+  mark registered in 2010 and renewed in 2019, the parked .com and .org domains), plus links to
+  `CONSTRUCTION.md` and the sheets.
+- **Kit:** rebuilt; `check_brand.py` reports 190 files, 0 problems. The only new files are the
+  ten sheet files and the manifest records for them. Every other regenerated file differed from
+  the committed one only by VectorCraft's embedded timestamps (PNG, PDF, EPS, sources) or by line
+  endings (SVG, JSON), and was restored. The sheets' SVGs are large (about 12.6 MB together,
+  outlined text); the kit grew from 11 MB to 24 MB.

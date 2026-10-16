@@ -824,6 +824,28 @@ def box(variant="hero"):
     return (x0 / u, y0 / u, x1 / u, y1 / u)
 
 
+def construction():
+    """The hero's key geometry, in design units (1000 per side of the unit square, y down), for
+    the brand guide's construction drawing. Computed from the same constants hero_art() uses, so
+    the drawing's annotations cannot drift from the art. No side effects."""
+    h = CHIP / 2
+    now = (C[0] + CHIP_NOW[0], C[1] + CHIP_NOW[1])
+    past = [(C[0] + dx, C[1] + dy) for dx, dy in CHIP_PAST]
+    allc = [now] + past
+    left = min(p[0] for p in allc) - h - BR_PAD
+    right = max(p[0] for p in allc) + h + BR_PAD
+    return dict(
+        units=UNITS["hero"], box=box("hero"), axis_x=X0, datum=C,
+        dial=dict(r_out=R_OUT, r_in=R_IN, r_base=R_BASE),
+        plates=[dict(y_top=y, thickness=t, half_width=w) for y, t, w in PLATES],
+        chip=dict(size=CHIP, now=now, past=past),
+        interval=dict(left=left, right=right, bar=BR_T,
+                      top=min(p[1] for p in allc) - h - BR_PAD - BR_T + 4,
+                      bottom=max(p[1] for p in allc) + h + BR_PAD + BR_T - 4),
+        weights=dict(heavy=W_HEAVY, medium=W_MED, fine=W_FINE, band=BAND, bracket=BR_T),
+    )
+
+
 def paint_for(colours, mono=False):
     """Validate a colours dict and return the role -> colour map the art is painted with.
 

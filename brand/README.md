@@ -34,8 +34,23 @@ The mark is an engineering drawing of that story, on one centre line:
   line (the drafting convention for the other positions of a moving part), joined by a dashed
   drift path.
 - **The interval.** Bold `[ ]` and a dimension line enclose every position, past and present:
-  the engine's answer. The datum sits inside the interval but not at its centre, because the
-  range is what the machine actually moves through, not a symmetric error bar.
+  the engine's answer. The frozen snapshot (the datum) lies inside it, and so does every
+  position the chip has taken since: the range is drawn around what the machine actually did.
+  *(Corrected 2026-10-16: an earlier version of this guide said the datum sits off the
+  interval's centre. Measured on the drawing, the two chip positions sit 60 units either side
+  of the datum, so the interval is centred on it; see the construction drawing below.)*
+
+### How the mark meets the brief
+
+The owner's brief opened with five principles. How the technical cutaway answers each:
+
+| Principle | How the mark answers it |
+| --- | --- |
+| **Simplicity** | Set aside by the owner on 2026-10-15 in favour of depth ("oversimplicity is the problem"). Simplicity survives where it matters for recognition: one centre line, one colour rule, a bold small mark for small sizes, and a true one-colour version. |
+| **Significance and purpose** | Every element is a sentence of the story: the refrigerator is the real hardware, the dial's datum is the frozen `from_backend` snapshot, the phantom chip is the drift, and the brackets are the engine's answer. A stranger's reading: "a quantum computer's refrigerator drawn like a blueprint; a dial shows the chip has drifted off its calibrated centre, and bold brackets mark the range it moves within." |
+| **Ingenuity** | The drawing speaks engineering's own language: section hatching, centre lines, phantom lines for a moving part's other positions, dimension lines. The range is literally dimensioned. It works from a 1280 px banner to a 16 px favicon through a redrawn small mark, and in one colour. |
+| **Uniqueness** | No Bloch sphere, no atom, no qubit glyph, no IBM eight-bar stripes or Qiskit symbol: the motifs quantum brands share. The mark draws the field's real machine, the dilution refrigerator, as an engineering drawing rather than as a symbol. No systematic search of other marks has been made; that check belongs with the trademark note below. |
+| **Beauty is not enough to sell** | Every number is in a script: the mark's geometry in `candidates/cutaway/mark.py`, every layout in `tools/build_brand.py`, every colour in `tools/palettes.py`, with checks (`check_brand.py`, `check_api.py`, `check_styles.py`) that fail on a wrong file, a stray colour or a contrast miss. |
 
 ## The one colour rule
 
@@ -85,6 +100,37 @@ TTFs>`. Logo files carry their letters as outlines and need no fonts; never rety
 wordmark, use the files.
 
 ## The mark
+
+<p>
+  <img src="kit/guide/construction-1-overview.png" alt="Construction sheet 1: the mark on its 1000-unit design grid" width="640">
+</p>
+
+**This mark is real engineering, not generated art.** Every plate, cable, tick, dash and
+bracket is computed from a number or formula in
+[`candidates/cutaway/mark.py`](candidates/cutaway/mark.py), and the full mathematics is written
+out in **[`CONSTRUCTION.md`](CONSTRUCTION.md)**: the design space and dash phases, the 45° hatch
+grid, the Bézier coax loom, the helix's front and back, the dial's graduations, the chip's
+lattice, the interval equations, the small marks' pixel grids, and how each number becomes a
+minimum size. Five construction sheets draw the same numbers, all generated from the mark's own
+geometry so they cannot drift from the art:
+
+| Sheet | Shows |
+| --- | --- |
+| [1. Overview](kit/guide/construction-1-overview.png) | The mark on its 1000-unit design grid, the centre line, the visible box, the plate rows |
+| [2. Refrigerator](kit/guide/construction-2-refrigerator.png) | Plates, rods, bores, the coax loom's Bézier curves, the helix, the section hatching |
+| [3. Dial](kit/guide/construction-3-dial.png) | Radii, the 3° and 15° graduations, the index, the knurl, the datum symbol |
+| [4. Interval](kit/guide/construction-4-interval.png) | The chip and its lattice, the drift Bézier and its control points, the bracket equations |
+| [5. Lines and small marks](kit/guide/construction-5-lines-and-small-marks.png) | Line weights and dash patterns at scale; the 32-unit and 16-unit small marks on their grids |
+
+The essentials:
+
+- **Centre line.** Everything hangs on the refrigerator's axis at x = 500 of 1000.
+- **Dial and datum.** The dial's centre (500, 748) is the datum: where the frozen snapshot says
+  the chip is. The dial's band is 10 units, its radius 200.
+- **Drift.** The chip now sits 60 units right of the datum; its earlier position, in phantom
+  line, 60 units left.
+- **Interval.** The brackets span 384 to 616 (232 units) and enclose both positions with 14
+  units of clearance; the bracket bars are 12 units thick.
 
 The hero is drawn in a design space of 1000 units (1024 px in the kit's 1024 px files); its
 visible art is 0.547 wide and 0.940 tall of that square (`mark.box("hero")`). Three line
@@ -187,7 +233,7 @@ preview (GitHub has no API for it).
 | `png/` | The same with transparent backgrounds: marks at 128 to 1024 px, small marks at 16 to 64 px, lockups at 1x, 2x and 4x | Tools that do not take SVG; use @2x on dense screens |
 | `pdf/`, `eps/` | Marks and lockups, one per file | Print shops, LaTeX, older sign-making workflows |
 | `web/` | Avatar, favicons, app icons, banner, cards, README header | The organisation's online presence |
-| `guide/` | Palette (hex, RGB, CMYK, ratios, gamut), clear space, brand board | This guide |
+| `guide/` | Five construction sheets, palette (hex, RGB, CMYK, ratios, gamut), clear space, brand board | This guide and [`CONSTRUCTION.md`](CONSTRUCTION.md) |
 | `source/` | The compressed `.vectorcraft` document behind each file | Editing in VectorCraft |
 
 Colour variants: `on-light` (light grounds), `on-dark` (dark grounds), `black` and `white`
@@ -233,11 +279,45 @@ regenerated PNG only when its pixels changed: compare the decoded pixels first (
 | Brief section | Where it is answered |
 | --- | --- |
 | 1. Scalability and versatility | Hero plus a redrawn small mark; one-colour versions; favicons; minimum sizes; `check_brand.py` |
-| 2. Strategic alignment and rationale | [`FOUNDATION.md`](FOUNDATION.md); "The idea" and the colour rule above |
+| 2. Strategic alignment and rationale | [`FOUNDATION.md`](FOUNDATION.md); "The idea", the five principles and the colour rule above; the mathematics in [`CONSTRUCTION.md`](CONSTRUCTION.md) |
 | 3. Colour and accessibility | Cryostat with hex, RGB, CMYK, WCAG ratios and gamut notes; chart colours checked for colour-vision deficiency |
 | 4. Typography | Space Grotesk and Space Mono, roles and settings above |
 | 5. Structural layout and lockups | Horizontal (primary), stacked, compact, mark alone; clear space; minimum sizes |
 | 6. File and production readiness | SVG, PNG, PDF, EPS and sources; web set; favicon markup; the AI-tools note |
+
+## Projects
+
+This is the organisation's identity; for now every project wears it as is.
+
+| Repository | What it uses |
+| --- | --- |
+| `superconducted-noise-engine` (the flagship) | The README header `kit/web/readme-header-noise-engine.svg` and the social card `social-card-noise-engine.png`; its figures use the chart style in `figures/` |
+| `superconducted-codesign` | The social card `social-card-codesign.png` |
+| `.github` (this repository) | The organisation's social card `social-card.png`, with the tagline; the profile banner `profile-header.svg` |
+
+A project that later needs its own mark builds it on the same drawing language (the centre
+line, the dial, the dimensioned range) and the same colour rule, and adds its variants to
+`tools/build_brand.py` rather than drawing them by hand.
+
+## Notes
+
+- **The name.** The TED in SuperconducTED is TED University in Ankara, where the team
+  studies; the university was founded by Türk Eğitim Derneği (the Turkish Education
+  Association, TED) under a 2009 law. The university publishes its own corporate identity guide
+  for its logo; this identity uses none of its elements, nor those of TED. Using the
+  university's name in the organisation's description should be confirmed with the university
+  before any launch beyond GitHub (events, print, merchandise).
+- **Trademark.** TED Conferences, LLC holds a registered US word mark "TED" (registered in 2010
+  and renewed in 2019, per public trademark records) and enforces it against names that suggest
+  a link with TED. SuperconducTED is not affiliated with TED Conferences, and the identity draws
+  nothing from its marks; but a name ending in capital TED can be read that way, so a trademark
+  check is advisable before any commercial use of the name. This is a note, not legal advice.
+- **Domains.** `superconducted.com` and `superconducted.org` are registered to someone else (on
+  2025-07-18) and show a parked page; they are not the organisation's. The organisation's
+  website is still to be chosen.
+- **History.** The design record is in
+  [`../docs/implementations/2026-10-15-superconducted-brand-identity.md`](../docs/implementations/2026-10-15-superconducted-brand-identity.md)
+  and [`2026-10-16-superconducted-brand-system.md`](../docs/implementations/2026-10-16-superconducted-brand-system.md).
 
 ## How it was chosen
 
