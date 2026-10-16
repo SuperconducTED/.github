@@ -2,7 +2,7 @@
   SuperconducTED · organization profile README
   Path:   .github/profile/README.md  (inside a repo named ".github" at the org level)
   Assets: header.svg, fuzzy-noise.svg and it2.svg at the repository root, loaded from main
-          by raw URL. header.svg is a copy of the brand kit's brand/kit/web/profile-header.svg:
+          by raw URL. header.svg is a copy of the brand kit's brand/web/profile-header.svg:
           rebuild the kit and copy the file again rather than editing header.svg by hand.
   Style:  no em/en dashes; middle dots and colons only.
 -->

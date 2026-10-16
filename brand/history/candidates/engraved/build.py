@@ -12,7 +12,7 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "tools"))
+TOOLS = os.path.abspath(os.path.join(HERE, "..", "..", "..", "tools"))
 sys.path.insert(0, TOOLS)
 sys.path.insert(0, HERE)        # python -I leaves the script's folder off sys.path
 from vcdriver import VC  # noqa: E402

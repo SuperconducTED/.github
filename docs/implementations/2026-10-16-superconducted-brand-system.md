@@ -294,3 +294,12 @@ real work, so people should know and learn the mathematics behind the logo."
   the committed one only by VectorCraft's embedded timestamps (PNG, PDF, EPS, sources) or by line
   endings (SVG, JSON), and was restored. The sheets' SVGs are large (about 12.6 MB together,
   outlined text); the kit grew from 11 MB to 24 MB.
+
+## As of 2026-10-16, later: the kit moved up to `brand/`
+
+The kit's folders are now `brand/eps`, `brand/guide`, `brand/pdf`, `brand/png`, `brand/source`,
+`brand/svg`, `brand/web` and `brand/manifest.json` (the layout of `Cassandra-Collective/.github`);
+the chosen mark's source moved from `brand/candidates/cutaway/` to `brand/mark/`, and the other
+candidates and the decision sheets to `brand/history/`. All moves are renames with unchanged blob
+ids. The `brand/kit/...` and `brand/candidates/...` paths in the sections above describe the tree
+as it was; see `2026-10-16-organisation-home.md`.

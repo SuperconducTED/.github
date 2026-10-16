@@ -1,7 +1,7 @@
 """SuperconducTED round 3, style: technical cutaway. The mark itself, behind the shared API.
 
 Every number of the drawing lives in this file; `build.py` only lays the mark out into
-documents and `brand/tools/build_brand.py` can call it in any palette (see ../MARK_API.md).
+documents and `brand/tools/build_brand.py` can call it in any palette (see ../history/candidates/MARK_API.md).
 
 Story the mark tells (top to bottom, on one shared centre line):
   * the chandelier: a side elevation of a dilution refrigerator, plates in section (hatched),
@@ -16,7 +16,7 @@ Story the mark tells (top to bottom, on one shared centre line):
   * the interval: bold [ ] brackets span every position, with a numeral-free dimension line
     under them; a second short dimension measures the drift from the crosshair.
 
-API (the contract in ../MARK_API.md)
+API (the contract in ../history/candidates/MARK_API.md)
 ------------------------------------
 * `box(variant)`: the art's bounding box (x0, y0, x1, y1) in the unit square, measured on the
   emitted geometry, strokes included at half their width on every side.

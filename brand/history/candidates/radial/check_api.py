@@ -37,7 +37,7 @@ import zlib
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "tools")))
+sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "..", "tools")))
 from vcdriver import VC, fresh_export  # noqa: E402
 import build  # noqa: E402
 import mark  # noqa: E402

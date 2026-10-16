@@ -2,7 +2,7 @@
 
 The mark itself (every number of the drawing and the colour-role API) lives in `mark.py`; this
 script only lays it out into documents, drawing every mark through `mark.draw_mark` in the
-neutral colours of ../MARK_API.md (ink #1A1D24, paper #F2EEE6, accent = ink), so the accent
+neutral colours of ../history/candidates/MARK_API.md (ink #1A1D24, paper #F2EEE6, accent = ink), so the accent
 changes nothing here. Rerun it to regenerate every file (about 1.5 s).
 
 Contract
@@ -22,7 +22,7 @@ import sys
 
 sys.dont_write_bytecode = True   # importing mark and vcdriver must not write __pycache__ anywhere
 HERE = os.path.dirname(os.path.abspath(__file__))
-TOOLS = os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools")
+TOOLS = os.path.join(os.path.dirname(HERE), "tools")
 sys.path.insert(0, HERE)
 sys.path.insert(1, TOOLS)
 from mark import draw_mark  # noqa: E402

@@ -1,4 +1,4 @@
-"""Acceptance checks for the isometric candidate's mark API (brand/candidates/MARK_API.md).
+"""Acceptance checks for the isometric candidate's mark API (brand/history/candidates/MARK_API.md).
 
 Usage (from this folder):  python -I check_api.py [--no-build] [reference_folder]
 
@@ -37,7 +37,7 @@ sys.dont_write_bytecode = True
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
-BRAND = os.path.abspath(os.path.join(HERE, "..", ".."))
+BRAND = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 sys.path.insert(0, os.path.join(BRAND, "tools"))
 sys.path.insert(0, HERE)
 from vcdriver import VC, fresh_export  # noqa: E402
@@ -335,7 +335,7 @@ def main():
           f"{len(outside)}", outside[:5], f"; known writes the audit missed {len(unseen)}", unseen[:3])
     after = snapshot()
     changed = sorted(p for p in set(before) | set(after) if before.get(p) != after.get(p))
-    where = sorted({os.path.relpath(p, BRAND).split(os.sep)[:2][-1] if os.path.relpath(p, BRAND).startswith("candidates")
+    where = sorted({os.path.relpath(p, BRAND).split(os.sep)[:2][-1] if os.path.relpath(p, BRAND).startswith(os.path.join("history", "candidates"))
                     else os.path.relpath(p, BRAND).split(os.sep)[0] for p in changed})
     print(f"    for information: {len(changed)} files elsewhere under brand/ changed meanwhile, in {where}")
     results["d"] = not outside and not unseen
