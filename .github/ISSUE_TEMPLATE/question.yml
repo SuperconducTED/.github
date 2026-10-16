@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Questions are welcome. For an open question, the repository's Discussions (Q&A category) is usually the better place: there an answer can be marked. Use this form when the question should be tracked as an issue from the start.
+        Questions are welcome. If the repository has Discussions, its Q&A category is usually the better place for an open question: there an answer can be marked. Use this form when the question should be tracked as an issue from the start.
 
         Before asking, please read the repository's README and its `docs/` folder, and search its issues and discussions, open and closed. There is no paid support: the projects are run by university students, who answer when they can. See [getting help](https://github.com/SuperconducTED/.github/blob/main/SUPPORT.md) for more.
 
