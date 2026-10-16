@@ -43,16 +43,18 @@ Detail:
   camera depth. Prisms (the brackets) paint side faces far to near, then the front cap.
 * Depth is flat facets only: top faces in paper, faces turned left in the light tint, faces
   turned right in the shade tint, the chip package one step darker, the bracket fronts in full
-  ink. No gradients, shadows or transparency anywhere.
+  ink (in the accent, when one is given). No gradients, shadows or transparency anywhere.
 * The drift trail is a Brownian bridge through seven waypoints: on each leg, Gaussian steps of
   standard deviation 0.014 world units are summed into a walk w(i), i = 0..7, and the bridge
   w(i) minus (i / 7) w(7) is added to the straight leg, so the noise is exactly zero at every
   waypoint. The seed is fixed (11), so the drawing is reproducible.
-* One-colour files are real knockouts, not white paint: the art is painted in black and white,
-  every stroke is outlined, VectorCraft's pathfinder merge keeps only the topmost colour of each
-  visible region, the white regions are deleted, and the result is re-exported. `build.py`
-  asserts that only one fill colour remains (`#000000` in hero-black.svg, `#1A1D24` in
-  small.svg), with no strokes and no opacity.
+* One-colour files are real knockouts, not white paint: `draw_mark(mono=True)` paints the art in
+  ink with white knockouts, outlines every stroke, lets VectorCraft's pathfinder merge keep only
+  the topmost colour of each visible region, and deletes the white regions, all in the active
+  document. `build.py` then passes the SVG through one import round trip (export, open, export),
+  which drops the degenerate curve segments the merge leaves (without it, 2 path lines of
+  hero-black.svg differ from the shipped file), and asserts that only one fill colour remains
+  (`#000000` in hero-black.svg, `#1A1D24` in small.svg), with no strokes and no opacity.
 
 ## Palette (two neutrals, tints mixed per RGB channel)
 
@@ -65,6 +67,51 @@ Detail:
 
 On the dark ground the tone ladder is inverted (t becomes 1 minus t), which keeps the contrast
 order: what is darkest on paper becomes brightest on ink, so the brackets and the chip still lead.
+
+## The mark API and the colour roles
+
+`mark.py` implements `brand/candidates/MARK_API.md`: `box(variant)`, `draw_mark(vc, x, y, size,
+colours, variant="hero"|"small", mono=False)` and `ROLES`. All geometry lives there; `build.py`
+only lays out the deliverables and draws every mark through `draw_mark`.
+
+* **Unit square.** Hero: the art's bounds, strokes included, contained and centred in the square;
+  the art is taller than wide, so `box("hero")` is (0.2202, 0, 0.7798, 1). Small: the 16-unit
+  design grid; `box("small")` is (0.05, 0.125, 0.95, 0.9969). `box` measures the visible art
+  (everything except ground-coloured tone 0 shapes).
+* **Tones to roles.** Tone 0 paper, tone 1 `tint-light`, tone 2 `tint-shade`, tone 3 `ink`. The
+  tints default to t(a) = (1 - a) paper + a ink per sRGB channel with **a = 0.20 and 0.55**,
+  exactly the coverage values the neutral drawing has always used (`#C7C4BF` and `#7B7B7B`), so
+  no separate neutral defaults are needed.
+* **Dark ground.** `on_dark(colours)` swaps ink and paper (an accent equal to ink follows it), and
+  the default mixes then give the inverted ladder: 80 % ink `#45474B` and 45 % ink `#91908F`,
+  exactly the dark-ground tints of the table above.
+* **The accent goes on the range only.** Both extruded brackets: front caps in the accent, side
+  faces in mix(paper, accent, 0.20) where they turn left (the `]`) and mix(paper, accent, 0.55)
+  where they turn right (the `[`), top faces in paper, and every edge line of the brackets in the
+  accent. The range zone: its fill at mix(paper, accent, 0.20), its far edge, its front edge and
+  its 25 graduations in the accent. The small mark: its two brackets. Everything else (the
+  machine, the dial and bezel, the aim point, plumb line, ghost, trail, chip) stays ink, tints
+  and paper. The bracket tops stay paper by necessity as well as by lighting: any accent mix on
+  a tone 0 face would also change it when accent = ink, and the neutral build must reproduce
+  the shipped files.
+* **Two colours beyond the roles.** With an accent that differs from ink, the hero paints the
+  accent's two facet mixes as well (for `#D9480F` on paper: `#EDCDBB` and `#E49370`), which are
+  not among the five roles. `colours_used(colours, variant, mono)` returns exactly what
+  `draw_mark` paints, so a checker that allows only the roles can add them.
+* **One colour.** `mono=True` uses `colours["ink"]` only; tones 0 and 1 are cut out, tone 2 is
+  hatched. The knockouts are painted white before they are cut (black when the ink is white).
+* **One extension.** `draw_mark(..., mono=True, knockouts="paint")` paints the knockouts in
+  `colours["paper"]` instead of cutting them. hero-white-on-black.png has always been drawn that
+  way, and a cut version over a black square is not pixel-identical to it (the merge changes the
+  geometry slightly), so the extension keeps that file reproducible. The default is `"cut"`,
+  which is the contract's behaviour.
+* **No hand-hinted 16 px drawing.** `VARIANTS` is ("hero", "small"); there is no "small16".
+
+`check_api.py` proves the acceptance tests: (a) rebuild and compare with a reference copy of the
+shipped files (SVG bytes; PNG pixels, decoded with zlib), (b) every pixel that changes with
+accent `#D9480F` lies where a range piece is visible (each piece re-rendered in painter's order
+in black with everything else in white), (c) one paint colour, no opacity, no paper shapes, also
+for white ink through the API, (d) an audit hook shows nothing outside this folder is written.
 
 ## The three stroke weights (at the 1024 px hero, 209.6 px per world unit)
 
@@ -90,7 +137,9 @@ heat exchanger threading the bore of the cold plate down to the mixing-chamber p
 
 | File | What it is |
 |---|---|
-| `build.py` | the whole drawing: geometry, painter, VectorCraft emission, exports (`python -I build.py`; `quick` for review renders) |
+| `mark.py` | the whole drawing behind the shared API: geometry, painter, colour roles, VectorCraft emission, one-colour cutting |
+| `build.py` | the deliverables: layouts and exports, every mark drawn through `draw_mark` (`python -I build.py`; `quick` for review renders) |
+| `check_api.py` | the MARK_API acceptance checks (`python -I check_api.py`; needs the shipped files copied to `_work/orig/` first) |
 | `hero.svg`, `hero-1024.png` | the hero on paper, tinted |
 | `hero-black.svg` | one colour, solid `#000000` on transparent, knockouts as real holes |
 | `hero-white-on-black.png` | one colour reversed |

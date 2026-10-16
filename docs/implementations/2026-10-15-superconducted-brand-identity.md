@@ -123,3 +123,10 @@ Plus a visual pass of the brand board and the 16 px favicon checked by eye.
 - CASSANDRA Collective brand kit, the pattern this follows: `Cassandra-Collective/.github/brand`.
 - Organisation profile: `profile/README.md` in this repository.
 - Engine rationale: `superconducted-noise-engine/README.md`, "Why this exists".
+
+## As of 2026-10-16
+
+The four candidates were committed and pushed as `37403c2`. The owner then widened the work to
+the whole branding operation (foundation, visual system, digital applications); that plan is in
+[`2026-10-16-superconducted-brand-system.md`](2026-10-16-superconducted-brand-system.md). The
+sections above are kept as written.

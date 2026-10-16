@@ -2,8 +2,10 @@
 
 One candidate mark in the style of a mechanical engineering drawing: a side elevation of a
 dilution-refrigerator chandelier whose lowest stage turns into a graduated magnifier dial, all
-on one shared centre line. Everything is drawn by `build.py` in VectorCraft from pure-Python
-geometry; rerun it to regenerate every file (about 1.5 s).
+on one shared centre line. Everything is drawn in VectorCraft from pure-Python geometry: the
+mark lives in `mark.py` (every number of the drawing, behind the shared API of
+`../MARK_API.md`), and `build.py` lays it out into the deliverables through `draw_mark`; rerun
+`build.py` to regenerate every file (about 1.5 s).
 
 ## Stranger's caption
 
@@ -66,12 +68,35 @@ edges, `small-16.png` comes from a hinted 16-grid variant, `small-16.svg` (1-pix
 3-pixel chip, symmetric layout). The hero is not usable below about 96 px; switch to the
 small mark there.
 
+## Colour roles and the mark API
+
+`mark.py` implements `box(variant)` and `draw_mark(vc, x, y, size, colours, variant, mono)` from
+`../MARK_API.md`. The variants are `"hero"` (1000 design units to the unit square), `"small"`
+(the 32-unit favicon master) and `"small16"` (the hinted 16-unit redraw behind `small-16.svg`;
+use it, not `"small"`, for a 16 px favicon).
+
+- **accent, the range only:** the bold [ ] brackets and the dimension that spans them (its two
+  extension lines dropped from the bracket bars, the dimension line and its two arrowheads); in
+  the small marks, the brackets.
+- **ink, everything else:** the refrigerator, the dial and its index, the datum, the chip, the
+  phantom chip, the drift path and its arrowhead, and the drift dimension above the brackets.
+- **paper and the tints** are accepted and unused: the design paints no ground-coloured shape.
+- **mono=True** paints every role in `colours["ink"]`. The hero is line work, so its one-colour
+  version keeps 8 stroked paths (all in that one colour) beside 6 filled ones; the knockouts
+  stay real geometry. `hero-black.svg` is exactly this output.
+
+With the accent equal to ink the drawing is the pre-API drawing byte for byte: a layer split
+by role is emitted as one path whenever its parts land on the same colour.
+
 ## Files
 
-`build.py` (all numbers), `hero.svg`, `hero-1024.png`, `hero-black.svg`, `hero-white-on-black.png`,
-`small.svg`, `small-32.png`, `small-16.svg`, `small-16.png` (rendered from `small-16.svg`, not
-from `small.svg`), `sheet.png` (2000 x 1540). `check-*.png` are my own inspection renders
-(hero at 128 and 64 px, and nearest-neighbour enlargements made by `upscale.py`).
+`mark.py` (all numbers of the mark and the API), `build.py` (the layouts), `hero.svg`,
+`hero-1024.png`, `hero-black.svg`, `hero-white-on-black.png`, `small.svg`, `small-32.png`,
+`small-16.svg`, `small-16.png` (rendered from `small-16.svg`, not from `small.svg`),
+`sheet.png` (2000 x 1540). `check_svg.py` and `check_api.py` verify the exports (below).
+`check-*.png` are my own inspection renders (hero at 128 and 64 px, and nearest-neighbour
+enlargements made by `upscale.py`); `check_api.py` writes its review renders, among them
+`_work/accent-demo.png` (the hero with accent `#D9480F`), into the git-ignored `_work/`.
 
 Verified on the exported files, not on the in-memory geometry:
 
@@ -83,6 +108,14 @@ Verified on the exported files, not on the in-memory geometry:
   quadrant states, the small marks' rings, chips and brackets); all 24 match.
 - Every SVG `<title>` is "SuperconducTED", the only word in any mark file; no en or em dash in
   any file in this folder.
+- `check_api.py` runs the acceptance tests of `../MARK_API.md` (2026-10-16): rebuilding through
+  `draw_mark` reproduces the four SVGs byte for byte and the five PNGs pixel for pixel against
+  copies taken before the refactor (in `_work/orig/`, made by hand; the script never writes
+  them); with accent `#D9480F`, 5628 hero pixels change at 1024 px and all 5628 lie in the mask
+  of the range elements (0 strays; 72 of 72 at 32 px, 16 of 16 at 16 px), while a mutated
+  drawing that also gives the drift dimension and the trail arrowhead the accent produces 405
+  strays, so the guard can fail; every mono variant paints one colour with no opacity, and the
+  mono hero is `hero-black.svg` byte for byte.
 
 ## What I would improve with more time
 

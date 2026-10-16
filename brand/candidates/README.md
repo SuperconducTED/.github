@@ -128,6 +128,23 @@ A reviewer's read on 2026-10-16, not a measurement:
 | Hero still useful at 128 px | Partly | Partly | Partly | Partly |
 | Small mark at 16 px | Ring, brackets, chip | Ring, brackets, chip (close to CASSANDRA) | Dial with arc (can read as a cup) | Brackets and block |
 
+## See them in use
+
+Each candidate drawn into the places the logo will actually live: the organisation banner, the
+avatar at the sizes GitHub shows it (200, 48 and 20 px), the favicon in a browser tab, a
+repository's social card, the engine's README header and the lockups. All in neutral colours,
+since the palette is chosen after the mark.
+
+| Engraved seal | Technical cutaway |
+| --- | --- |
+| [![Engraved seal in use](../decision/in-use-engraved.png)](../decision/in-use-engraved.png) | [![Technical cutaway in use](../decision/in-use-cutaway.png)](../decision/in-use-cutaway.png) |
+| **Radial astrolabe** | **Isometric illustration** |
+| [![Radial astrolabe in use](../decision/in-use-radial.png)](../decision/in-use-radial.png) | [![Isometric illustration in use](../decision/in-use-isometric.png)](../decision/in-use-isometric.png) |
+
+The six palette options on every candidate, with each palette's chart style, are in
+[`../decision/palettes.png`](../decision/palettes.png). The palette is the owner's choice,
+after the team picks the mark.
+
 ## After the team chooses
 
 The chosen candidate becomes the official kit in `brand/`: the palette is chosen with the
@@ -164,6 +181,10 @@ cd brand/candidates/radial && python -I build.py ship && cd -
 cd brand/candidates/isometric && python -I build.py && cd -
 python -I brand/candidates/compare.py brand/candidates
 ```
+
+Each folder also has `mark.py`, the shared drawing interface described in
+[`MARK_API.md`](MARK_API.md) (so the kit generator can draw any candidate in any palette), and
+`check_api.py`, which proves that interface against the committed files.
 
 The SVG files come out byte-identical on every run. The PNG files carry a creation timestamp,
 so their bytes change while their pixels do not (checked on 2026-10-16 by decoding all 20).

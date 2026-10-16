@@ -31,6 +31,23 @@ The coax bundle at half past seven (lower left), between the flange and the dial
 - `small-16.png` is hand-hinted pixel art of the same drawing (`PIX16` in `build.py`), because the vector rendered at 16 px blurs to grey. This is the usual favicon practice, but it means the 16 px file is not literally `small.svg` scaled.
 - The hero's interval runs from 18 degrees before to 68 degrees after the index; the small mark's runs from 0 to 90 degrees. That is a deliberate hinting choice, not a different meaning.
 
+## Colour roles (the mark API, `mark.py`)
+
+`mark.py` implements the shared contract in `../MARK_API.md`: `box(variant)`, `draw_mark(vc, x, y, size, colours, variant, mono)` and `VARIANTS = ("hero", "small", "small16")`. It holds every number of the mark; `build.py` only lays the mark out and draws every deliverable through `draw_mark`.
+
+- **The accent is the range only.** Hero: the `[` and `]` bent onto the dial and the solid interval arc between them, its graduation windows still knocked out. Small mark: the two glyphs and the heavy band between them (the ring over the interval swells into the band, so that whole arc is the range). `small16`: the same cells, marked `x` in `PIX16`. The index, the chip, its trail and reticle, the rings, plates, rods, coax and hatching stay ink. No variant paints paper inside the art.
+- **`small16`** is the hand-hinted 16 px favicon: one unit square per `PIX16` cell. It lands on whole pixels only at `size` 16 (or a whole multiple) with whole-number `x`, `y`; as of 2026-10-16, `brand/tools/build_brand.py` draws its 16 px favicon at `size` 14, centred, which puts the cells off the pixel grid.
+- **One colour stays one path.** With `mono=True`, or with the accent equal to the ink (the neutral palette), `draw_mark` runs exactly the boolean sequence the committed files were built with, so they rebuild byte for byte. With a distinct accent it draws two paths, ink below and accent on top, which never overlap.
+- **How the hero is split.** The accent region A is its own fold of the drawing: the two dial rims clipped to the interval's wedge, the solid arc, the window and halo knockouts, the brackets, and every later knockout. Ink = mark minus A; accent = mark minus ink. The rims are in A because the drawn arc's edge is the envelope of two Bezier approximations of the same circles (rims and arc); without them the ink kept hairline slivers up to 0.08 units thick along the arc. Taking the accent as "mark minus ink" rather than A itself keeps the arc's edges as the mark's own curve segments, so they rasterise exactly as in the one-colour mark. The one new edge is where the support rod at bearing 30 stands on the arc (radius 302).
+- **How the small mark is split.** Its accent pieces are whole islands of the drawing, so a selector of two rectangles whose edges run only through paper (`SMALL_ACCENT`) separates them exactly: ink = mark minus selector, accent = mark intersected with it.
+
+Acceptance (`python -I check_api.py`, about 3 minutes, renders in `_work/`, log in `_work/check_api.log`), run on 2026-10-16:
+
+- (a) A rebuild through `draw_mark` with the neutral colours: `hero.svg`, `hero-black.svg` and `small.svg` are byte-identical to the committed files; all five PNGs are pixel-identical (0 differing pixels each; their bytes differ only because VectorCraft embeds a timestamp).
+- (b) Accent `#D9480F` against accent = ink: 23,214 hero pixels change at 1000 px, all of them on the accent path and covering all 23,214 of its pixels, none outside the range's wedge; small at 256 px 6,229 of 6,229; `small16` at 128 px 1,472 of 1,472. Forcing the two-path split with accent = ink moves 0 pixels in every variant.
+- (c) `mono=True` exports one path, one fill colour, no stroke, no opacity, no paper, in all three variants (the same colours without `mono` export two fills).
+- (d) `box()` matches the rendered art's bounds exactly in all three variants.
+
 ## Quality loop log
 
 1. Outer graduated dial with a centre-pivoted alidade: read as a **watch face** (hand plus pivot), chip and trail tiny in an empty middle, coax S-bends looked like springs. Rebuilt.
@@ -62,12 +79,14 @@ The coax bundle at half past seven (lower left), between the flange and the dial
 
 | File | What it is |
 |---|---|
-| `build.py` | Everything, all numbers in it. `python -I build.py` builds look renders and all deliverables (about 2.5 minutes). |
-| `hero.svg`, `hero-1024.png` | Hero, ink `#1A1D24` on paper `#F2EEE6` (one compound path plus the paper square). |
+| `mark.py` | The mark: every number of the drawing, and the colour-role API (`box`, `draw_mark`, `VARIANTS`). |
+| `build.py` | The layouts: every deliverable drawn through `draw_mark`, plus the small-mark lab variants kept for the record. `python -I build.py` builds look renders and all deliverables (about 2.5 minutes). |
+| `check_api.py` | The MARK_API acceptance checks (a) to (d); writes only to `_work/`. |
+| `hero.svg`, `hero-1024.png` | Hero, ink `#1A1D24` on paper `#F2EEE6` (one compound path plus the paper square; the neutral accent is the ink). |
 | `hero-black.svg` | Hero, solid black on transparent (one compound path). |
 | `hero-white-on-black.png` | Hero, solid white on black. |
-| `small.svg`, `small-32.png`, `small-16.png` | Small companion: 32-unit vector, its 32 px render, the hand-hinted 16 px pixel art. |
+| `small.svg`, `small-32.png`, `small-16.png` | Small companion: 32-unit vector, its 32 px render, the hand-hinted 16 px pixel art (`variant="small16"`). |
 | `sheet.png` | 2000 x 1130 px, exported at scale 1: hero at 1000 px, on ink, solid black on white, true-pixel ladders (hero 128 and 64, small 32 and 16) on paper and on ink, the small mark magnified, the lockup. |
-| `_work/` | Quality-loop renders (`loopN-*`), zoom crops, the SVG round-trip renders (`rt-*.png`) and magnified favicons (`mag-*.png`), plus the patch scripts used between loops. |
+| `_work/` | Quality-loop renders (`loopN-*`), zoom crops, the SVG round-trip renders (`rt-*.png`) and magnified favicons (`mag-*.png`), the API check's renders (`check/`, `rebuild/`, `accent-demo*.png`) and the pre-refactor originals (`orig/`). Git-ignored. |
 
-Checks run: every shipped SVG re-opened in VectorCraft and re-rendered (`_work/rt-*.png`); each SVG holds one ink path and no text, gradient, opacity or filter; text appears only on the raster sheet's lockup (Space Grotesk Medium); no em or en dashes in this file or in `build.py`.
+Checks run: every shipped SVG re-opened in VectorCraft and re-rendered (`_work/rt-*.png`); each shipped SVG holds one ink path (two, ink and accent, when `draw_mark` gets a distinct accent) and no text, gradient, opacity or filter; text appears only on the raster sheet's lockup (Space Grotesk Medium); no em or en dashes in this file or in `build.py`.
