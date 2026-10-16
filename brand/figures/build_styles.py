@@ -71,7 +71,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "tools"))
 from colour_math import (BAND, CHROMA_FLOOR, CVD_TARGET, GRAPHIC_MIN,  # noqa: E402
                          NORMAL_FLOOR, TEXT_MIN, contrast, cvd_delta_e, delta_e, hue_distance,
                          max_chroma, mix, oklch, oklch_hex)
-from palettes import OPTIONS  # noqa: E402
+from palettes import CHOSEN, OPTIONS  # noqa: E402
 
 STYLES = os.path.join(HERE, "styles")
 ROLES = os.path.join(HERE, "roles.json")
@@ -437,6 +437,15 @@ def build(verbose=False):
             for mode in MODES:
                 print(f"   {mode:5s} {' '.join(entry[mode]['series'])}  band {entry[mode]['band_fill']}"
                       f"  all-pairs slots {entry[mode]['series_all_pairs_slots']}")
+    # The identity's own palette (palettes.CHOSEN) also gets the plain names
+    # superconducted.mplstyle and superconducted-dark.mplstyle, the files team code should use.
+    doc["chosen"] = CHOSEN
+    for mode in MODES:
+        suffix = "-dark" if mode == "dark" else ""
+        with open(os.path.join(STYLES, f"superconducted-{CHOSEN}{suffix}.mplstyle"), encoding="utf-8") as src, \
+                open(os.path.join(STYLES, f"superconducted{suffix}.mplstyle"), "w", encoding="utf-8",
+                     newline="\n") as fh:
+            fh.write(src.read())
     with open(ROLES, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(doc, fh, indent=2)
         fh.write("\n")

@@ -4,10 +4,11 @@ The look of every figure the team publishes. One matplotlib style per palette op
 light and a dark ground, plus a tiny helper so team code says *what* it draws (an interval, a
 snapshot, a measurement) instead of picking colours.
 
-> **Status, 2026-10-16:** the palette is not chosen yet (the owner picks after the team picks
-> the mark), so all six options in `brand/tools/palettes.py` are generated and validated. Once
-> one is picked, its file becomes `superconducted.mplstyle` and adoption in the engine is a
-> follow-up pull request there.
+> **Status, 2026-10-16: the palette is Cryostat** (the owner's choice, after the team chose the
+> technical cutaway). Use `styles/superconducted.mplstyle` (and `superconducted-dark.mplstyle`),
+> which `build_styles.py` copies from the Cryostat files, or call `use()` with no argument. The
+> other five options stay generated and validated as the record of the choice. Adoption in the
+> engine is a follow-up pull request there.
 
 ![The six palettes side by side](demo/all-palettes.png)
 

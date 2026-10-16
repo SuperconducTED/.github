@@ -57,6 +57,12 @@ OPTIONS = {
                  "#111214", "#F7F7F5", "#5F6368", "#9AA0A6"),
 }
 
+# The palette of the identity: Cryostat, the owner's choice on 2026-10-16, after the team chose
+# the technical cutaway as the mark. The other options stay defined so the decision record and
+# the chart demos can still show them; everything that ships uses CHOSEN.
+CHOSEN = "cryostat"
+MARK = "cutaway"
+
 TEXT_MIN, GRAPHIC_MIN = 4.5, 3.0
 
 

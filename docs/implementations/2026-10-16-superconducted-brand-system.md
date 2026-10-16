@@ -233,3 +233,27 @@ reproduced exactly, all four exiting 0.
   of rounds 1 to 3.
 - `brand/candidates/README.md`: the four candidates and the team's choice.
 - CASSANDRA Collective brand kit (`Cassandra-Collective/.github/brand`): the pattern this follows.
+
+## As of 2026-10-16, later: the choices are made and the kit is built
+
+- **The team chose the technical cutaway** (the owner's words: "team feedback is in the second
+  logo is the way to go"). The owner then chose the **Cryostat** palette (he added that it suits
+  a project about emulation), the tagline **"Noise as a range, not a number."**, and **MIT** for
+  the scripts. A decision sheet of the cutaway in all six palettes, each kit built and checked
+  (180 files, 0 problems each), informed the palette choice.
+- **The official kit** is in `brand/kit/`: `build_brand.py --out brand/kit` (defaults now
+  `palettes.MARK = "cutaway"`, `palettes.CHOSEN = "cryostat"`), 180 files, `check_brand.py`
+  0 problems. The organisation's social card carries the tagline.
+- **Fixed on the way:** the palette guide printed CMYK as 0 or 1, because VectorCraft's
+  `color.convert` answers in fractions; it now shows percentages and flags the two colours
+  outside VectorCraft's "Generic CMYK (SWOP-like)" gamut (`#0A1B24`, colour difference 3.5;
+  `#4FD6E6`, 7.7) for proofing.
+- **Charts:** `brand/figures/styles/superconducted.mplstyle` (and `-dark`) are now written as
+  copies of the Cryostat styles, and the helper's `use()` defaults to Cryostat; `check_styles.py`
+  still passes 46 of 46.
+- **Guide:** `brand/README.md` now documents the chosen identity: construction, minimum sizes
+  derived from the geometry (hero 128 px, brackets 1.6 px wide there), CMYK with gamut notes,
+  the tagline, and the kit's files. `FOUNDATION.md` records the tagline, `LICENSE-BRAND.md`
+  the MIT text (identical to the engine's licence).
+- **Still only on the owner's word:** the organisation profile fields and avatar, replacing the
+  profile banner and its two diagrams and badges, and uploading the social previews.

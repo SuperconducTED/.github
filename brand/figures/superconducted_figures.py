@@ -63,13 +63,15 @@ def style_path(palette, dark=False):
     return os.path.join(STYLES, f"superconducted-{palette}{'-dark' if dark else ''}.mplstyle")
 
 
-def use(palette, dark=False):
-    """Apply the style for `palette` (a key of PALETTES) on a light or dark ground.
+def use(palette=None, dark=False):
+    """Apply the style for `palette` (a key of PALETTES) on a light or dark ground. With no
+    palette, the identity's own (roles.json "chosen": Cryostat, the owner's pick of 2026-10-16).
 
     Side effect: changes matplotlib's global rcParams (plt.style.use) and selects the roles the
     drawing helpers use. Returns the roles dict (ground, text, band_fill, series, ...).
     """
     global _current
+    palette = palette or _DOC["chosen"]
     plt.style.use(style_path(palette, dark))
     _current = dict(_DOC["palettes"][palette]["dark" if dark else "light"],
                     palette=palette, dark=dark)

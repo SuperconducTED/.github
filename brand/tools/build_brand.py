@@ -40,6 +40,7 @@ MARKS = ("engraved", "cutaway", "radial", "isometric")
 FONT, MONO = "Space Grotesk", "Space Mono"
 WORDMARK = dict(text="SuperconducTED", style="Medium", tracking=0)
 ORG_LINE = "Student research at TED University on honest noise models for superconducting quantum computers."
+TAGLINE = "Noise as a range, not a number."   # owner's pick, 2026-10-16 (brand/FOUNDATION.md)
 PLACE_LINE = "Ankara · Türkiye"
 REPO_CARDS = {
     "noise-engine": dict(title="Noise engine", line="Fuzzy-logic noise engine for Qiskit Aer-based quantum computer emulators."),
@@ -424,7 +425,8 @@ class Kit:
     def cards(self):
         """Social preview cards, 1280 x 640 (GitHub's recommended size)."""
         c, v, vc = CARD, self.v["on-dark"], self.vc
-        specs = [("social-card", None, "SuperconducTED", ORG_LINE)]
+        # The organisation's card carries the tagline; the repository cards their descriptions.
+        specs = [("social-card", None, "SuperconducTED", TAGLINE)]
         # The kicker keeps the name's own casing: capitals only belong to lettering drawn into a mark.
         specs += [(f"social-card-{k}", "SuperconducTED", s["title"], s["line"]) for k, s in REPO_CARDS.items()]
         for stem, kicker, title, line in specs:
@@ -470,16 +472,23 @@ class Kit:
         self.new("palette", W, H, f"SuperconducTED palette: {p['name']}", p["why"])
         rect(vc, 0, 0, W, H, "#FFFFFF")
         sized(vc, f"{p['name']}: {p['why']}", 40, 60, 24, "#111111", style="Medium")
-        cmyk = {}
+        # color.convert answers with CMYK as fractions 0..1 through VectorCraft's "Generic CMYK
+        # (SWOP-like)" profile; shown here as percentages. Colours outside that gamut are
+        # flagged with their colour difference, so they are proofed before a print run.
+        cmyk, gamut = {}, {}
         for i, (name, hx) in enumerate(uniq):
             y = 100 + i * ROW
             vc.tool("draw_shape", shape="rectangle", x=40, y=y, width=90, height=90, fill=hx,
                     stroke="#BBBBBB", strokeWidth=1)
             c = vc.cmd("color.convert", color=hx, to="cmyk")
-            cmyk[hx] = [round(x) for x in c["values"]]
+            cmyk[hx] = [round(100 * x) for x in c["values"]]
+            gamut[hx] = dict(out_of_gamut=bool(c.get("outOfGamut")), delta_e=round(c.get("deltaE") or 0.0, 1))
             rgb = " ".join(str(int(hx[k:k + 2], 16)) for k in (1, 3, 5))
+            note = f"   out of CMYK gamut (dE {gamut[hx]['delta_e']}): proof before printing" \
+                if gamut[hx]["out_of_gamut"] else ""
             sized(vc, f"{name}   {hx}", 160, y + 34, 22, "#111111", font=MONO)
-            sized(vc, f"RGB {rgb}    CMYK {' '.join(map(str, cmyk[hx]))} (approx.)", 160, y + 70, 18, "#444444", font=MONO)
+            sized(vc, f"RGB {rgb}    CMYK {' '.join(map(str, cmyk[hx]))} (approx.){note}", 160, y + 70, 18,
+                  "#444444", font=MONO)
         y = 100 + ROW * len(uniq) + 30
         for k, (what, r) in enumerate(rs.items()):
             target = palettes.TEXT_MIN if what.startswith("text") else palettes.GRAPHIC_MIN
@@ -487,8 +496,9 @@ class Kit:
                   "#222222", font=MONO)
         self.export("palette", folder="guide", print_files=False, png=[("", 1)], source=False, transparent=False)
         with open(os.path.join(self.out, "guide", "palette.json"), "w", encoding="utf-8", newline="\n") as f:
-            json.dump(dict(key=self.key, palette=p, cmyk=cmyk, ratios={k: round(v, 2) for k, v in rs.items()}),
-                      f, indent=2)
+            json.dump(dict(key=self.key, palette=p, cmyk_percent=cmyk, cmyk_gamut=gamut,
+                           cmyk_profile="VectorCraft Generic CMYK (SWOP-like)",
+                           ratios={k: round(v, 2) for k, v in rs.items()}), f, indent=2)
         # Clear space around the primary lockup.
         v = self.v["on-light"]
         self.new("clear-space", 1700, 700, "SuperconducTED clear space", "Keep X = 0.25 H free on every side.")
@@ -651,8 +661,10 @@ def palette_sheet(vc, scratch, out_png, figures_demo=None):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--mark", choices=MARKS)
-    ap.add_argument("--palette", choices=list(palettes.OPTIONS) + ["neutral"])
+    # Defaults are the identity's own choices (palettes.MARK and palettes.CHOSEN, 2026-10-16), so
+    # `build_brand.py --out brand/kit` rebuilds the official kit.
+    ap.add_argument("--mark", choices=MARKS, default=palettes.MARK)
+    ap.add_argument("--palette", choices=list(palettes.OPTIONS) + ["neutral"], default=palettes.CHOSEN)
     ap.add_argument("--out")
     ap.add_argument("--decision", action="store_true")
     ap.add_argument("--scratch")
@@ -684,8 +696,8 @@ def main():
             shutil.copyfile(s, os.path.join(decision, os.path.basename(s)))
         print("decision aids written to", decision)
         return
-    if not (a.mark and a.palette and a.out):
-        raise SystemExit("give --mark, --palette and --out, or --decision --scratch")
+    if not a.out:
+        raise SystemExit("give --out (and optionally --mark, --palette), or --decision --scratch")
     out = os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
     p = NEUTRAL if a.palette == "neutral" else palettes.OPTIONS[a.palette]

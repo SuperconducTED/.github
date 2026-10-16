@@ -1,0 +1,672 @@
+{
+  "mark": "cutaway",
+  "palette": "cryostat",
+  "files": [
+    {
+      "stem": "superconducted-mark-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-on-light-128.png": "png",
+        "superconducted-mark-on-light-256.png": "png",
+        "superconducted-mark-on-light-512.png": "png",
+        "superconducted-mark-on-light-1024.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-on-light-24.png": "png",
+        "superconducted-mark-small-on-light-32.png": "png",
+        "superconducted-mark-small-on-light-48.png": "png",
+        "superconducted-mark-small-on-light-64.png": "png"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-on-light-16.png": "png"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "superconducted-mark-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-on-dark-128.png": "png",
+        "superconducted-mark-on-dark-256.png": "png",
+        "superconducted-mark-on-dark-512.png": "png",
+        "superconducted-mark-on-dark-1024.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-on-dark-24.png": "png",
+        "superconducted-mark-small-on-dark-32.png": "png",
+        "superconducted-mark-small-on-dark-48.png": "png",
+        "superconducted-mark-small-on-dark-64.png": "png"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-on-dark-16.png": "png"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "superconducted-mark-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-black-128.png": "png",
+        "superconducted-mark-black-256.png": "png",
+        "superconducted-mark-black-512.png": "png",
+        "superconducted-mark-black-1024.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-black-24.png": "png",
+        "superconducted-mark-small-black-32.png": "png",
+        "superconducted-mark-small-black-48.png": "png",
+        "superconducted-mark-small-black-64.png": "png"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-black-16.png": "png"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "superconducted-mark-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-white-128.png": "png",
+        "superconducted-mark-white-256.png": "png",
+        "superconducted-mark-white-512.png": "png",
+        "superconducted-mark-white-1024.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-white-24.png": "png",
+        "superconducted-mark-small-white-32.png": "png",
+        "superconducted-mark-small-white-48.png": "png",
+        "superconducted-mark-small-white-64.png": "png"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "superconducted-mark-small-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-mark-small-white-16.png": "png"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "superconducted-horizontal-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-horizontal-on-light.png": "png",
+        "superconducted-horizontal-on-light@2x.png": "png",
+        "superconducted-horizontal-on-light@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-stacked-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-stacked-on-light.png": "png",
+        "superconducted-stacked-on-light@2x.png": "png",
+        "superconducted-stacked-on-light@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-compact-on-light",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#0A6C7C",
+        "#717C82",
+        "#C0C8CB",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-compact-on-light.png": "png",
+        "superconducted-compact-on-light@2x.png": "png",
+        "superconducted-compact-on-light@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-horizontal-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-horizontal-on-dark.png": "png",
+        "superconducted-horizontal-on-dark@2x.png": "png",
+        "superconducted-horizontal-on-dark@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-stacked-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-stacked-on-dark.png": "png",
+        "superconducted-stacked-on-dark@2x.png": "png",
+        "superconducted-stacked-on-dark@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-compact-on-dark",
+      "folder": "svg",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-compact-on-dark.png": "png",
+        "superconducted-compact-on-dark@2x.png": "png",
+        "superconducted-compact-on-dark@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-horizontal-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-horizontal-black.png": "png",
+        "superconducted-horizontal-black@2x.png": "png",
+        "superconducted-horizontal-black@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-stacked-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-stacked-black.png": "png",
+        "superconducted-stacked-black@2x.png": "png",
+        "superconducted-stacked-black@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-compact-black",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#737373",
+        "#CCCCCC",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-compact-black.png": "png",
+        "superconducted-compact-black@2x.png": "png",
+        "superconducted-compact-black@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-horizontal-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-horizontal-white.png": "png",
+        "superconducted-horizontal-white@2x.png": "png",
+        "superconducted-horizontal-white@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-stacked-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-stacked-white.png": "png",
+        "superconducted-stacked-white@2x.png": "png",
+        "superconducted-stacked-white@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "superconducted-compact-white",
+      "folder": "svg",
+      "colours": [
+        "#000000",
+        "#333333",
+        "#8C8C8C",
+        "#FFFFFF"
+      ],
+      "transparent": true,
+      "png": {
+        "superconducted-compact-white.png": "png",
+        "superconducted-compact-white@2x.png": "png",
+        "superconducted-compact-white@4x.png": "png"
+      },
+      "vector": true,
+      "print": true,
+      "source": true
+    },
+    {
+      "stem": "favicon",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": true,
+      "png": {
+        "favicon-32.png": "web",
+        "favicon-48.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "favicon-16",
+      "folder": "web",
+      "colours": [],
+      "transparent": true,
+      "png": {
+        "favicon-16.png": "web"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "app-icon",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "app-icon-180.png": "web",
+        "app-icon-192.png": "web",
+        "app-icon-512.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "avatar",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "avatar-500.png": "web",
+        "avatar-1024.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "profile-header",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "profile-header.png": "web",
+        "profile-header@2x.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "readme-header-noise-engine",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "readme-header-noise-engine.png": "web",
+        "readme-header-noise-engine@2x.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "social-card",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "social-card.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "social-card-noise-engine",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "social-card-noise-engine.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "social-card-codesign",
+      "folder": "web",
+      "colours": [
+        "#0A1B24",
+        "#38464E",
+        "#4FD6E6",
+        "#879297",
+        "#EEF3F5"
+      ],
+      "transparent": false,
+      "png": {
+        "social-card-codesign.png": "web"
+      },
+      "vector": true,
+      "print": false,
+      "source": true
+    },
+    {
+      "stem": "palette",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "palette.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "clear-space",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "clear-space.png": "guide"
+      },
+      "vector": true,
+      "print": false,
+      "source": false
+    },
+    {
+      "stem": "brand-board",
+      "folder": "guide",
+      "colours": [],
+      "transparent": false,
+      "png": {
+        "brand-board.png": "guide"
+      },
+      "vector": false,
+      "print": false,
+      "source": false
+    }
+  ]
+}

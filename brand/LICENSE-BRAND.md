@@ -10,14 +10,30 @@ licensed under the **Creative Commons Attribution 4.0 International licence (CC 
 You may share and adapt them for any purpose, provided you give appropriate credit, link to the
 licence and indicate if you made changes. Suggested credit:
 
-> SuperconducTED brand, © 2026 the SuperconducTED team, licensed CC BY 4.0.
+> SuperconducTED brand, © 2026 SuperconducTED contributors, licensed CC BY 4.0.
 
-## The scripts: MIT (proposed)
+## The scripts: MIT
 
 The Python scripts under `brand/tools/`, `brand/figures/` and each candidate's folder
-(`build.py`, `mark.py`, `check_*.py` and the like) are offered under the MIT licence, matching
-the SuperconducTED noise engine. *Proposed on 2026-10-16; this repository has no licence file
-of its own yet, and the owner has to confirm this choice.*
+(`build.py`, `mark.py`, `check_*.py` and the like) are licensed under the MIT licence, matching
+the SuperconducTED noise engine (owner decision, 2026-10-16):
+
+> Copyright (c) 2026 SuperconducTED contributors
+>
+> Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+> and associated documentation files (the "Software"), to deal in the Software without
+> restriction, including without limitation the rights to use, copy, modify, merge, publish,
+> distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+> Software is furnished to do so, subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be included in all copies or
+> substantial portions of the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+> BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+> DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## What the licence does not grant
 

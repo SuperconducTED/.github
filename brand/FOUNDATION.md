@@ -1,9 +1,9 @@
 # SuperconducTED brand foundation
 
-> **Status: draft, 2026-10-16.** The story is approved by the owner. Everything else here is a
-> draft built from what the repositories already say (the engine's README, the organisation
-> profile, `docs/team.md`) and waits for the owner: he picks the tagline, and the organisation
-> profile fields at the end are applied to GitHub only on his word.
+> **Status, 2026-10-16.** The story is approved by the owner and the tagline is chosen (section
+> 5). The rest was drafted from what the repositories already say (the engine's README, the
+> organisation profile, `docs/team.md`); the organisation profile fields at the end are applied
+> to GitHub only on the owner's word.
 
 ## 1. The story
 
@@ -61,7 +61,10 @@ audits, the lab-log field notes), not invented:
   everywhere else.
 - **Collegial.** Credit to IBM, Qiskit, the people whose work we build on, and each other.
 
-## 5. Tagline shortlist (the owner picks one)
+## 5. Tagline
+
+**Chosen by the owner, 2026-10-16: "Noise as a range, not a number."** The shortlist it was
+chosen from:
 
 | # | Tagline | Why it fits |
 | --- | --- | --- |

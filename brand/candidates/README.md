@@ -1,9 +1,10 @@
 # SuperconducTED logo candidates (round 3)
 
-> **Status, 2026-10-16:** four candidates, all kept. The owner liked all four and is asking the
-> team to choose. Nothing here is the official logo yet. The palette and the typeface are still
-> open: every candidate is drawn in two neutral tones (ink `#1A1D24`, paper `#F2EEE6`) so the
-> choice is about the drawing, not the colour.
+> **Decided, 2026-10-16: the team chose candidate 2, the technical cutaway.** The owner then
+> chose the Cryostat palette. The official identity is in [`../kit/`](../kit/) and its guide in
+> [`../README.md`](../README.md). This page stays as the record of the choice: the four
+> candidates as the team saw them, drawn in two neutral tones (ink `#1A1D24`, paper
+> `#F2EEE6`) so the choice was about the drawing, not the colour.
 
 ![The four candidates side by side](compare.png)
 
