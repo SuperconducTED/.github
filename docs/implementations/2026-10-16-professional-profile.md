@@ -63,3 +63,11 @@ N/A: prose and layout only.
 - `2026-10-16-apply-brand-to-org-profile.md` (the previous restyle, which listed the stale facts)
 - `2026-10-16-organisation-home.md`
 - `Cassandra-Collective/.github` `profile/README.md` (the model)
+
+## As of 2026-10-16, later: rendered and checked
+
+`profile/README.md` is 33 lines. On GitHub's blob view of the branch it renders with the stacked
+lockup in both themes (the on-dark file under a dark GitHub theme), the tagline, the paragraph,
+the three-row projects table, "How we work" and the footer links; all 34 relative links in the
+changed files resolve and none contains an em dash. The organisation page itself shows the new
+profile once this branch is merged into `main`.
