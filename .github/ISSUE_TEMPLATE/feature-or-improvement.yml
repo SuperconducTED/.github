@@ -1,0 +1,60 @@
+name: Feature or improvement
+description: Propose something new, or a better way to do something that already exists.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for the proposal. A proposal that starts from the problem, and says how we would know the change worked, is much easier to accept.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What is hard, slow, missing or wrong today? Describe the situation, not the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Other approaches, including doing nothing, and why this one is better.
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How we would know it works
+      description: The test, measurement or pass criterion that would show the change does what it should. For an experiment, write it down before the run.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Would you like to work on this?
+      options:
+        - "Yes, I would like to open the pull request"
+        - "Yes, with some guidance"
+        - "No, I am suggesting it for someone else"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched this repository's issues, open and closed, for the same proposal.
+          required: true
+        - label: I agree to follow the [code of conduct](https://github.com/SuperconducTED/.github/blob/main/CODE_OF_CONDUCT.md).
+          required: true

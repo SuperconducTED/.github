@@ -1,0 +1,76 @@
+name: Bug report
+description: Something does not work, or works differently from what the documentation says.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting this. The most useful reports say exactly what was run and exactly what was seen.
+
+        **Security problems do not belong here.** Follow the [security policy](https://github.com/SuperconducTED/.github/blob/main/SECURITY.md) and report them privately.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you observe? Quote error messages exactly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+      description: If a document says it should behave differently, link the section.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands and configuration, from a fresh clone if you can. If it involves calibration data, name the backend and the snapshot.
+      placeholder: |
+        1. git clone ...
+        2. python ...
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      description: "The output of `git rev-parse --short HEAD`, or the release you used."
+      placeholder: "1a2b3c4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Python version, and the versions of key libraries (for example qiskit, qiskit-aer, numpy, scipy).
+      placeholder: |
+        Windows 11, Python 3.12, qiskit 2.4.1, qiskit-aer 0.17.2
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: Paste the relevant output. It is formatted as code automatically. Remove any tokens, keys or personal data first, including your IBM Quantum token.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched this repository's issues, open and closed, for the same problem.
+          required: true
+        - label: I agree to follow the [code of conduct](https://github.com/SuperconducTED/.github/blob/main/CODE_OF_CONDUCT.md).
+          required: true

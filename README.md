@@ -251,3 +251,25 @@ A crisp `T1 = 142 µs` is what Aer wants. A real backend that just got recalibra
 <picture>
   <img alt="" src="https://capsule-render.vercel.app/api?type=waving&color=0A1B24&height=100&section=footer&animation=fadeIn">
 </picture>
+
+## Community health files
+
+This repository is also the organisation's community-health home. GitHub uses each of these files for every repository in the organisation that has no file of that type of its own; a repository's own file always takes precedence. Issue forms are all or nothing: a repository with its own templates or `config.yml` in `.github/ISSUE_TEMPLATE` uses none of the defaults.
+
+| Path | What it holds |
+|---|---|
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | The code of conduct: the Contributor Covenant 2.1 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | The general contributing guide, with the rules for this repository at the end |
+| [`SECURITY.md`](SECURITY.md) | How to report a security problem privately, and what to expect |
+| [`SUPPORT.md`](SUPPORT.md) | Where to ask questions, and what to include |
+| [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/) | Default issue forms (bug report, feature or improvement, question) and the template chooser's `config.yml` |
+| [`.github/pull_request_template.md`](.github/pull_request_template.md) | The default pull request template |
+| [`docs/implementations/`](docs/implementations/) | One document per change: what was done, why, and how it was verified |
+
+## Licence
+
+This repository is licensed in two parts (see [`NOTICE`](NOTICE)):
+- **MIT License** ([`LICENSE`](LICENSE)): the documentation, profile, community files, templates and the scripts in `brand/`.
+- **CC BY 4.0** ([`brand/LICENSE-BRAND.md`](brand/LICENSE-BRAND.md)): the brand files (marks, lockups, cards, icons, chart styles and their sources). They may be shared and adapted, with credit.
+
+The code of conduct is the Contributor Covenant (CC BY 4.0).
