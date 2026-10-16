@@ -117,3 +117,27 @@ N/A: purely structural (renames, paths and prose).
   `2026-10-16-repository-presence.md` (this branch)
 - `2026-10-16-superconducted-brand-system.md` (the kit, built under `brand/kit/`)
 - `Cassandra-Collective/.github` `README.md` and `brand/README.md` (the model)
+
+## As of 2026-10-16, later: merged, settings applied and read back
+
+- This pull request (#5) merged as `0861796` at head `b332c79`.
+- **Private vulnerability reporting:** on for `superconducted-noise-engine` and `.github`
+  (`gh api repos/SuperconducTED/<repo>/private-vulnerability-reporting` gives `"enabled": true`).
+- **Discussions:** on for `.github`, with the six default categories; Q&A (slug `q-a`) is
+  answerable (GraphQL `discussionCategories`).
+- **Descriptions and topics** (read back with `gh api repos/SuperconducTED/<repo>`):
+  - `superconducted-noise-engine`: the approved description (208 characters), homepage the
+    website, 13 topics;
+  - `.github`: the approved description, homepage the website, 5 topics;
+  - `superconducted-codesign`: description unchanged, 4 topics;
+  - `superconducted.github.io`: its description, homepage the website, 4 topics.
+- **Organisation profile:** name, description, website and location, as in the decisions table.
+- **Community health** (`gh api repos/SuperconducTED/<repo>/community/profile`):
+  `superconducted-noise-engine` 87% (37% before), `.github` 100% (25%),
+  `superconducted.github.io` 100% (37%). CASSANDRA's flagship and `.github` read 87% the same day.
+- **Engine:** SuperconducTED/superconducted-noise-engine#117 (README rewritten, `CITATION.cff`,
+  the engine's community files); its README header loads from this repository's `brand/web/`
+  and renders (200, 147,799 bytes).
+- **Still by hand (no API):** the social previews (`brand/web/social-card.png` on `.github`,
+  `social-card-noise-engine.png` on the engine, `social-card-codesign.png` on the co-design
+  repository) and the organisation avatar (`brand/web/avatar-1024.png`).
