@@ -4,7 +4,7 @@
 |---|---|
 | Repository | `SuperconducTED/.github`, plus the settings of every repository in the organisation |
 | Branch | `docs/community-health` |
-| Status | Planned. The settings below are drafts or approvals; none is applied yet. Each "As of" section appended later records what was applied and read back |
+| Status | Planned. Every setting below is approved by the owner (2026-10-16); none is applied yet. Each "As of" section appended later records what was applied and read back |
 
 Prose style: no em or en dashes.
 
@@ -24,7 +24,7 @@ So the flagship showed no description or topics in search, on the organisation p
 
 | File | Description |
 |---|---|
-| `docs/implementations/2026-10-16-repository-presence.md` | This record: the approved settings, the drafts awaiting approval, and which social card goes on which repository. |
+| `docs/implementations/2026-10-16-repository-presence.md` | This record: the approved settings, descriptions, topics and homepages, and which social card goes on which repository. |
 
 Nothing else in the tree. Repository settings live outside it; the engine's README header is a separate engine pull request (below).
 
@@ -39,9 +39,9 @@ Nothing else in the tree. Repository settings live outside it; the engine's READ
 
 Not approved, so unchanged: Discussions for superconducted-codesign. Its questions go through the default Question form.
 
-The owner approved these "once the .github pull request merges". Turning them on just before the merge instead would make `SECURITY.md` and `SUPPORT.md` true from their first minute; that ordering is the owner's call at merge time.
+The owner approved these "once the .github pull request merges", and on 2026-10-16 confirmed right after the merge rather than right before it. For the minutes in between, the merged `SECURITY.md` names a report form, and the default `config.yml` and `SUPPORT.md` link a Q&A page, that do not exist yet; they are flipped immediately after the merge and read back.
 
-### 2. Drafts for the owner's approval
+### 2. Descriptions, topics and homepages (approved by the owner on 2026-10-16, to apply when this branch merges)
 
 Descriptions follow the Collective's pattern: what the project is, in one sentence a stranger understands, with its status. Topics favour names other repositories already use, so the project shows up on those topic pages; the counts are `gh api "search/repositories?q=topic:<name>"` on 2026-10-16.
 
@@ -64,7 +64,7 @@ Descriptions follow the Collective's pattern: what the project is, in one senten
 - Homepage: none.
 - Topics (4): `requirements` (832), `software-requirements-specification` (12), `co-design` (45), `quantum-computing`.
 
-Apply, on approval, with `gh repo edit SuperconducTED/<repo> --description "..." --homepage "..." --add-topic <a>,<b>,...`, then read back with `gh api repos/SuperconducTED/<repo> --jq '{description,homepage,topics}'`.
+Apply, after the merge, with `gh repo edit SuperconducTED/<repo> --description "..." --homepage "..." --add-topic <a>,<b>,...`, then read back with `gh api repos/SuperconducTED/<repo> --jq '{description,homepage,topics}'`.
 
 ### 3. Social previews (the owner uploads by hand)
 
@@ -98,10 +98,10 @@ None.
 | Decision | Alternatives | Why | Who |
 |---|---|---|---|
 | One card per repository, as the kit provides | The organisation card everywhere | The kit was built that way; the Collective did the same | Brand kit, pull request #1 |
-| The organisation card (with the tagline) on `.github` | No card there | `.github` is the organisation's home; its card is the one with the tagline | Engineering, for the owner's review |
-| Homepage = the organisation page for the two public repositories | Empty; `docs/architecture.md` | Gives a route back to the organisation from a repository found by search; the Collective's choice where a project has no site | Engineering, for the owner's review |
-| Topics chosen from names other repositories use | Coining exact names for interval type-2 fuzzy logic | A topic nobody else uses leads nowhere | Engineering, for the owner's review |
-| Settings applied only on the owner's word, then read back | Applying the drafts directly | They are public-facing and outside the tree | Owner's standing rule |
+| The organisation card (with the tagline) on `.github` | No card there | `.github` is the organisation's home; its card is the one with the tagline | Engineering; the owner reviews it at upload |
+| Homepage = the organisation page for the two public repositories | Empty; `docs/architecture.md` | Gives a route back to the organisation from a repository found by search; the Collective's choice where a project has no site | Engineering; approved by the owner, 2026-10-16 |
+| Topics chosen from names other repositories use | Coining exact names for interval type-2 fuzzy logic | A topic nobody else uses leads nowhere | Engineering; approved by the owner, 2026-10-16 |
+| Settings applied only on the owner's word, then read back | Applying them without asking | They are public-facing and outside the tree | Owner's standing rule |
 
 ## Verification
 
