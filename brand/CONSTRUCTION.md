@@ -79,6 +79,8 @@ engineering section.
 
 ## 4. The refrigerator
 
+![Construction sheet 2: the refrigerator](kit/guide/construction-2-refrigerator.png)
+
 Everything hangs on one vertical **centre line, x = X₀ = 500**.
 
 ### Plates
